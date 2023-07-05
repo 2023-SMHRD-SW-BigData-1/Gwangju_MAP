@@ -1,0 +1,22 @@
+
+
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+.login{
+    font-size: 1rem;
+    
+}
+
+.tlt2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-size: 0.4rem;
+}
+
+
