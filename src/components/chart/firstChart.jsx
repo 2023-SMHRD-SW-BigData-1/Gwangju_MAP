@@ -11,12 +11,7 @@ import {
 } from "recharts";
 
 const data = [
-    {
-        name: "",
-        안전율: 100,
-        범죄율: 100,
-        amt: 0,
-    },
+    
     {
         name: "광산구",
         안전율: 3000,

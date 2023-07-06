@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 // import App from './App';
 import App from'./components/Main'
 import reportWebVitals from './reportWebVitals';

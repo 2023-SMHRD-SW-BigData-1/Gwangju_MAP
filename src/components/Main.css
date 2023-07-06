@@ -1,6 +1,57 @@
-/*.FC{
-        width : 1100;
-        height : 600;
-        background-color: white;
+.main{
 }
-*/
+
+.FCT{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+}
+.FCT1{
+        display: flex;
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 5%;
+
+}
+.FCT2{
+        display: flex;
+        margin-bottom: 100px;     
+        margin-right: 150px;
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 5%;
+}
+.FCM{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+}
+.FCM1{
+      display: flex;
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 5%;
+      
+}
+.FCM2{
+      display: flex;
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 5%;
+      
+}
+.FCM3{
+      display: flex;    
+        background-color: white;
+        border: 1px solid lightgray;
+        border-radius: 5%;
+      
+}
+.Board{
+      width: 1200;
+      height: 1000;
+      background-color: cornflowerblue
+}
+.FCF{
+      background-color: deepskyblue;
+}
