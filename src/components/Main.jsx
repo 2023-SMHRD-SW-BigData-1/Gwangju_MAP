@@ -17,7 +17,11 @@ const Main = () => {
         <Header />
 
         <div className = "FCT" >
-          <div className='FCT1' style={{ width : 1000, height : 600}}><FirstChart /></div>
+          <div className='FCT1' style={{ width : 1000, height : 600}}>
+            <div className='FCT1T'>
+          <h3>광주5대 범죄 발생건수 그래프</h3>
+            </div>
+            <FirstChart /></div>
         <div className='FCT2' style={{width : 600, height : 600}} ><SecondChart /></div>
         </div>
       <div className='FCM' > 
