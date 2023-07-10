@@ -1,21 +1,21 @@
 import React from 'react'
 import './Header.css'
+import { Link, Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import axios from 'axios';
 import Header from './Header'
 import FirstChart from './chart/firstChart'
 import SecondChart from'./chart/secondChart'
 import ThirdChart from './chart/thirdChart'
 import FourthChart from './chart/fourthChart'
 import FiveChart from './chart/fiveChart'
+import Login from '../pages/Login'
 import './Main.css'
-
-
 
 const Main = () => {
   return (
     <div className='main' style={{backgroundColor : '#F4FFFF'}}>
-
-        <Header />
-
+      <Header/>
         <div className = "FCT" >
           <div className='FCT1' style={{ width : 1000, height : 600}}>
             <div className='FCT1T'>
@@ -38,7 +38,9 @@ const Main = () => {
         <h1> 지도 영역</h1>
       </div>
 
+   
     </div>
+
   )
 }
 
