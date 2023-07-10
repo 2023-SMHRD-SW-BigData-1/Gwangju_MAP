@@ -1,0 +1,23 @@
+
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    background-color: white;
+}
+.login{
+    font-size: 0.9rem;
+    
+}
+
+.tlt2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-size: 0.5rem;
+    background-color: white;
+}
+
+

@@ -1,14 +1,13 @@
 import './App.css';
-import { Route, Routes } from 'react-router';
+import { Route, Routes } from 'react-router-dom';
 import Main from './components/Main';
-import Header from './components/Header';
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="warp">
       <Routes>
-      <Route path='/' element={<Main/>}></Route>
+        <Route path='/' element={<Main/>} ></Route>
       </Routes>
 
     </div>

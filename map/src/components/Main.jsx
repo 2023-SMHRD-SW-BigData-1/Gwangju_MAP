@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from './Header'
+import FirstChart from './chart/firstChart'
+
 
 const Main = () => {
   return (
@@ -10,7 +12,7 @@ const Main = () => {
             <div className='FCT1T'>
           <h3>광주5대 범죄 발생건수 그래프</h3>
             </div>
-            < firstChart/></div>
+            <FirstChart/></div>
             </div>
 
 
