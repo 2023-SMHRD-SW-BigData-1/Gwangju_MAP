@@ -1,8 +1,9 @@
 import React,{ useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-
+import { navigator,useNavigate } from 'react-router-dom';
 const Login = () => {
+  const navigate = useNavigate();
 
   // const result = axios.post('http://localhost:8888/user/login',{mb_id: 'mb_id',mb_pw: 'mb_pw'})/
  
@@ -23,11 +24,14 @@ const onClickLogin = async () => {
 
   console.log(result.data);
   // 로그인 성공 시 처리
+
 } catch (error) {
   console.error(error);
   // 로그인 실패 시 처리
 }
 }
+
+
   
   
   return (
