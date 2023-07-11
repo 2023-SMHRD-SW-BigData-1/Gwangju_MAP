@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Label } from 'recharts'
 
+
+
+
 const Join = () => {
 
+  
   // const result = axios.post('http://localhost:8888/user/Join',{mb_id: 'mb_id',mb_pw: 'mb_pw', mb_nick:'mb_nick'})
 
   const [mb_id, setMb_Id] = useState("");
@@ -20,6 +24,8 @@ const Join = () => {
   const handleinputnick = (e) =>{
     setMb_Nick(e.target.value)
   }
+
+
 
   const onClickJogin = async () => {
     try {
