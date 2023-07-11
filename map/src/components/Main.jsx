@@ -12,18 +12,21 @@ const Main = () => {
     <div className='main' style={{backgroundColor : 'F4FFFF'}}>
         <Header/>
         <div className='click'>
-        <div class="btn-group">
-  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    Action
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
-</div>
-
+        <div className="btn-group">
+        <div className="dropdown">
+    <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    연도 선택
+   </a>
+   <ul className="dropdown-menu">
+    <li><a className="dropdown-item" href="#">2018</a></li>
+    <li><a className="dropdown-item" href="#">2019</a></li>
+    <li><a className="dropdown-item" href="#">2020</a></li>
+    <li><a className="dropdown-item" href="#">2021</a></li>
+    <li><a className="dropdown-item" href="#">2022</a></li>
+   </ul>
+    </div>
+  
+        </div>
         </div>
         <div className = "FCT" >
           <div className='FCT1' style={{ width : 1100, height : 650}}>

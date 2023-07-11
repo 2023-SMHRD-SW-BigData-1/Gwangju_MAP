@@ -10,33 +10,36 @@ router.get('/', (req, res) => {
     res.send(path.join(__dirname, "map/build/index.html"))
 })
 
-// router.post('/user/Join', (req, res) => {
-//     console.log('Join Router!',req.body)
+router.post('/user/Join', (req, res) => {
+    console.log('Join Router!', req.body)
 
-//     let { mb_id, mb_pw, mb_nick } = req.body;
+    let { mb_id, mb_pw, mb_nick } = req.body;
 
-//     let or = 'select id from tbl_member where mb_id = :mb_id'
-//     conn.query(or, {mb_id},(err,rows)=>{
-//             console.log(rows);
-//         if(rows.length>0){
-//             res.json({result : 'duplicated'})
-//         }else{
-//               // 회원가입 시작!
-//             let od2 = 'insert into tbl_member values(mb_id,mb_pw,mb_nick)'
-//             conn.query(od2,[req.body.mb_id, req.body.mb_pw, req.body.mb_nick],(err,rows)=>{
-//                 if(rows){
-//                     console.log('joined successfully!');
-//                     res.json({result : 'success'})
-//                 }else{
-//                     console.log('Failed to Join...');
-//                     res.json({result : 'failed'})
-//                 }
-//             })
-           
-//         }
-//     })
-    
-// })
+    oracledb.getConnection(db_config, (err, conn) => {
+        if (err) throw err;
+
+        let or = 'select MB_ID from TBL_MEMBER where MB_ID = :mb_id'
+        conn.execute(or, [mb_id], (err, result) => {
+            if (err) throw err;
+
+            if (result.rows.length > 0) {
+                res.json({ result: 'duplicated' })
+            } else {
+                // 회원가입 시작!
+                let od2 = 'insert into  TBL_MEMBER (MB_ID, MB_PW, MB_NICK) values (:MB_ID, :MB_PW, :MB_NICK)'
+                conn.execute(od2, [mb_id, mb_pw, mb_nick], (err, result) => {
+                    if (err) {
+                        console.log('Failed to Join...');
+                        res.json({ result: 'failed' })
+                    } else {
+                        console.log('joined successfully!');
+                        res.json({ result: 'success' })
+                    }
+                })
+            }
+        })
+    })
+});
 
 router.post('/user/login',(req, res)=>{
     console.log('login Router!');
