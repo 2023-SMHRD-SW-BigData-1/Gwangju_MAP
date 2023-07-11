@@ -1,7 +1,14 @@
 import React,{} from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const Login = () => {
+
+  const result = axios.post('http://localhost:8888/user/login',{mb_id: 'mb_id',mb_pw: 'mb_pw'})
+
+  
+  
+  
   return (
     <div>
         <input type="text" name='id'/>
