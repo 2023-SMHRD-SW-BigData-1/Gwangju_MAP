@@ -2,6 +2,7 @@ import './App.css';
 import Main from './components/Main';
 import { Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
+import Join from './pages/Join';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Routes>
       <Route path='/' element={<Main/>}></Route>
       <Route path='/pages/Login' element={<Login/>}></Route>
-
+      <Route path='/pages/Join' element={<Join/>}></Route>
       </Routes>
 
 
