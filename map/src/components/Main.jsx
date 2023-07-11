@@ -11,18 +11,32 @@ const Main = () => {
   return (
     <div className='main' style={{backgroundColor : 'F4FFFF'}}>
         <Header/>
+        <div className='click'>
+        <div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Action
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div>
+
+        </div>
         <div className = "FCT" >
-          <div className='FCT1' style={{ width : 1000, height : 600}}>
+          <div className='FCT1' style={{ width : 1100, height : 650}}>
             <div className='FCT1T'>
-          <h3>광주5대 범죄 발생건수 그래프</h3>
+          <h4>cctv 설치 수</h4>
             </div>
             <FirstChart /></div>
-            <div className='FCT2' style={{width : 600, height : 600}} ><SecondChart /></div>
+            <div className='FCT2' style={{width : 700, height : 650}} ><SecondChart /></div>
         </div>
 
         <div className='FCM' > 
         <div className='FCM1' style={{width : 800, height : 500}}> <ThirdChart/>  </div>
-        <div className='FCM2' style={{ width : 500, height : 500}}> <FourthChart/> </div>
+        <div className='FCM2' style={{ width : 700, height : 600}}> <FourthChart/> </div>
         <div className='FCM3' style={{ width : 400, height : 400}}> <FiveChart/> </div>
     </div>  
 
