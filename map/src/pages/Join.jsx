@@ -29,7 +29,7 @@ const Join = () => {
 
   const onClickJogin = async () => {
     try {
-      const result = await axios.post('http://localhost:8888/user/Join', { mb_id, mb_pw, mb_nick });
+      const result = await axios.post('http://localhost:8888/pages/Login/pages/Join', { mb_id, mb_pw, mb_nick });
   
     console.log(result.data);
     // 전송 성공 시 처리

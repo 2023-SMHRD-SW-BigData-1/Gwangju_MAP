@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 
 
 
-router.post('/user/Join', (req, res) => {
+router.post('/pages/Login/pages/Join', (req, res) => {
     console.log('Join Router!', req.body)
 
     let { mb_id, mb_pw, mb_nick } = req.body;
@@ -22,7 +22,7 @@ router.post('/user/Join', (req, res) => {
     oracledb.getConnection(db_config, (err, conn) => {
         if (err) throw err;
 
-        let or = 'select MB_ID from TBL_MEMBER where MB_ID = :mb_id'
+        let or = 'select mb_id from tbl_member where MB_ID = :mb_id'
         conn.execute(or, [mb_id], (err, result) => {
             if (err) throw err;
 
@@ -30,7 +30,7 @@ router.post('/user/Join', (req, res) => {
                 res.json({ result: 'duplicated' })
             } else {
                 // 회원가입 시작!
-                let od2 = 'insert into  TBL_MEMBER (MB_ID, MB_PW, MB_NICK) values (:MB_ID, :MB_PW, :MB_NICK)'
+                let od2 = 'insert into  tbl_member (MB_ID, MB_PW, MB_NICK) values (:mb_id, :mb_pw, :mb_nick)'
                 conn.execute(od2, [mb_id, mb_pw, mb_nick], (err, result) => {
                     if (err) {
                         console.log('Failed to Join...');
@@ -39,7 +39,7 @@ router.post('/user/Join', (req, res) => {
                         console.log('joined successfully!');
                         
                         res.json({ result: 'success' })
-                        res.redirect('http://localhost:8888');
+                        // res.redirect('http://localhost:8888');
                         
                     }
                 })
