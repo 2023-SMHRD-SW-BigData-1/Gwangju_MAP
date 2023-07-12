@@ -21,5 +21,5 @@ app.use(express.static(path.join(__dirname, "./map/build/index.html")))
 
 app.use('/', indexRouter)    
 app.listen(app.get('port'), ()=>{
-    console.log(app.get('port'), '번 port에서 서버연결 대기중..')
+    console.log(app.get('port'), '번 port에서 서버연결 대기중..') 
 })
