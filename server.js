@@ -17,7 +17,7 @@ oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT
 app.use(express.json())
 app.use(cors())
 
-app.use(express.static(path.join(__dirname, "map/build/index.html")))
+app.use(express.static(path.join(__dirname, "./map/build/index.html")))
 
 app.use('/', indexRouter)    
 app.listen(app.get('port'), ()=>{
