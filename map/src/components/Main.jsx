@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import './Main.css'
 import FirstChart from './chart/firstChart'
@@ -6,32 +6,22 @@ import SecondChart from './chart/secondChart'
 import ThirdChart from './chart/thirdChart'
 import FourthChart from './chart/fourthChart'
 import FiveChart from './chart/fiveChart'
+import axios from 'axios'
 
 const Main = () => {
+
+
   return (
     <div className='main' style={{backgroundColor : 'F4FFFF'}}>
         <Header/>
-        <div className='click'>
-        <div className="btn-group">
-        <div className="dropdown">
-    <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    연도 선택
-   </a>
-   <ul className="dropdown-menu">
-    <li><a className="dropdown-item" href="#">2018</a></li>
-    <li><a className="dropdown-item" href="#">2019</a></li>
-    <li><a className="dropdown-item" href="#">2020</a></li>
-    <li><a className="dropdown-item" href="#">2021</a></li>
-    <li><a className="dropdown-item" href="#">2022</a></li>
-   </ul>
-    </div>
-  
-        </div>
+        <div>
+          <h1></h1>
         </div>
         <div className = "FCT" >
           <div className='FCT1' style={{ width : 1100, height : 650}}>
             <div className='FCT1T'>
           <h4>cctv 설치 수</h4>
+          <h4>범죄율</h4>
             </div>
             <FirstChart /></div>
             <div className='FCT2' style={{width : 700, height : 650}} ><SecondChart /></div>

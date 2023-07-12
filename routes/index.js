@@ -14,6 +14,49 @@ router.get('/', (req, res) => {
 
 
 
+
+
+
+router.get('/crimeCounter',(req,res)=>{
+    // 차트 데이터 받아오기
+    // 1번 차트
+    let sql = 'select cctv_gu "name", sum(cctv_cnt) "pv" from tbl_cctv where cctv_year<=2017 group by cctv_gu'
+    oracledb.getConnection(db_config,(err,conn)=>{
+
+        if(err) throw err;
+
+        conn.execute(sql,[],(err,result)=>{
+
+            if(err) throw err;
+
+            conn.release((err)=>{
+                if(err) throw err;
+            })
+
+            res.send(result.rows)
+
+        })
+
+
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 회원가입
+
 router.post('/pages/Login/pages/Join', (req, res) => {
     console.log('Join Router!', req.body)
 
@@ -51,7 +94,7 @@ router.post('/pages/Login/pages/Join', (req, res) => {
 
 
 
-
+// 로그인
 
 router.post('/pages/login',(req, res)=>{
     console.log('login Router!');
@@ -80,14 +123,20 @@ router.post('/pages/login',(req, res)=>{
 
 
 
-    // conn.query(sql,[req.body.userData.id, req.body.userData.pw], (err, rows)=>{
-    //     console.log(rows);
-    //     if(rows.length >0){
-    //         res.json({result : 'success', id : req.body.userData.id})
-    //     }else{
-    //         res.json({result : 'failed'})
-    //     }
-    // })
+
+
+
+
+
+
+
+
+
+   
+    
+
+
+
 })
 
 module.exports = router;
