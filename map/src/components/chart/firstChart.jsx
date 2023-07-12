@@ -1,10 +1,5 @@
-import React, { PureComponent, useEffect } from 'react';
+import React, { PureComponent, useEffect, useState } from 'react';
 import axios from 'axios';
-
-
-
-// cctv 설치 수 => pv
-// 범죄율 => uv
 
 import {
   ComposedChart,
@@ -19,33 +14,52 @@ import {
   Scatter,
   ResponsiveContainer,
 } from 'recharts';
+const Example = ({ Ch1 }) => {
+  
+  
+  
+  // cctv 설치 수 => pv
+  // 범죄율 => uv
+  
+  useEffect(() => {
+    console.log('첫 렌더링');
+    axios
+      .get('http://localhost:8888/crimeCounter')
+      .then((res) => {
+        data = (res.data); 
+      })
+      .catch(() => {});
+  }, []);
+
+  
 
 
-const data = [
+
+let data = [
   {
     name: '광산구',
-    uv: 600,
-    pv: 800
+    uv: 300,  // 범죄건수
+    pv: 3000  // cctv 현황 // 범죄율
   },
   {
     name: '남구',
-    uv: 868,
-    pv: 967
+    uv: 300,
+    pv: 1967
   },
   {
     name: '서구',
-    uv: 1397,
-    pv: 1098
+    uv: 820,
+    pv: 3098
   },
   {
     name: '북구',
-    uv: 1480,
-    pv: 1200,
+    uv: 520,
+    pv: 1500,
   },
   {
     name: '동구',
-    uv: 1520,
-    pv: 1108
+    uv: 720,
+    pv: 3008
   }
   
 ];
@@ -54,16 +68,12 @@ const data = [
 
 
 
-export default class Example   extends PureComponent  {
-  static demoUrl = 'https://codesandbox.io/s/simple-composed-chart-h9zif';
-  
-  render() {
-    
+
     return (
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart
           width={500}
-          height={400}
+          height={500}
           data={data}
           margin={{
             top: 20,
@@ -72,6 +82,7 @@ export default class Example   extends PureComponent  {
             left: 20,
           }}
           >
+
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis dataKey="name" scale="band" />
           <YAxis />
@@ -81,10 +92,10 @@ export default class Example   extends PureComponent  {
           <Bar dataKey="pv" barSize={20} fill="#413ea0"  name='CCTV 설치현황'/>
           <Line type="monotone" dataKey="uv" stroke="#ff7300" name='범죄율' />
           {/* <Scatter dataKey="cnt" fill="red" /> */}
-        </ComposedChart>
-      </ResponsiveContainer>
-    );
-  }
-}
+          </ComposedChart>
+    </ResponsiveContainer>
+  );
+};
 
+export default Example;
 

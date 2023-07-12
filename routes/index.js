@@ -21,6 +21,9 @@ router.get('/crimeCounter',(req,res)=>{
     // 차트 데이터 받아오기
     // 1번 차트
     let sql = 'select cctv_gu "name", sum(cctv_cnt) "pv" from tbl_cctv where cctv_year<=2017 group by cctv_gu'
+    // let sql2 = 'select crime_region "name", sum(pcrime) "uv" from tbl_crime where crime_year=2017 group by crime_region';
+
+
     oracledb.getConnection(db_config,(err,conn)=>{
 
         if(err) throw err;
@@ -36,10 +39,22 @@ router.get('/crimeCounter',(req,res)=>{
             res.send(result.rows)
 
         })
+        // conn,execute(sql2,[],(err,result)=>{
+
+        //     if(err) throw err;
+
+        //     conn.release((err)=>{
+        //         if(err) throw err;
+        //     })
+
+        //     res.send(result.rows)
+
+        // }))
 
 
+        
     })
-})
+    })
 
 
 

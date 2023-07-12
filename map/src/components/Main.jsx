@@ -11,6 +11,19 @@ import BoardList from './board/BoardList'
 
 const Main = () => {
 
+//   // 차트 1번 데이터 받아오기
+//   const [ch1,setCh1] = useState({})
+//   useEffect(()=>{
+//     console.log('첫 렌더링');
+//     axios.get('http://localhost:8888/crimeCounter')
+//     .then((res)=>{
+//       console.log(res.data);
+//       setCh1 = res.data
+//     })
+//     .catch(()=>{})
+//   },[])
+
+
 
   return (
     <div className='main' style={{backgroundColor : 'F4FFFF'}}>
@@ -24,7 +37,7 @@ const Main = () => {
           <h4>cctv 설치 수</h4>
           <h4>범죄율</h4>
             </div>
-            <FirstChart /></div>
+            <FirstChart  /></div>
             <div className='FCT2' style={{width : 700, height : 650}} ><SecondChart /></div>
         </div>
 
