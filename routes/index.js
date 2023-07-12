@@ -39,7 +39,7 @@ router.post('/pages/Login/pages/Join', (req, res) => {
                         console.log('joined successfully!');
                         
                         res.json({ result: 'success' })
-                        // res.redirect('http://localhost:8888');
+                        res.redirect('http://localhost:8888');
                         
                     }
                 })
