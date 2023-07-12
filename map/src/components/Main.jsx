@@ -7,6 +7,7 @@ import ThirdChart from './chart/thirdChart'
 import FourthChart from './chart/fourthChart'
 import FiveChart from './chart/fiveChart'
 import axios from 'axios'
+import BoardList from './board/BoardList'
 
 const Main = () => {
 
@@ -34,7 +35,7 @@ const Main = () => {
     </div>  
 
     <div className='Board'>
-    <h1>게시판 영역</h1>
+    <BoardList></BoardList>
       </div>
 
       <div className='FCF'>
