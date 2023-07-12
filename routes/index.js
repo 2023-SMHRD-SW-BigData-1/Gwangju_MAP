@@ -39,7 +39,7 @@ router.post('/pages/Login/pages/Join', (req, res) => {
                         console.log('joined successfully!');
                         
                         res.json({ result: 'success' })
-                        res.redirect('http://localhost:8888');
+                        
                         
                     }
                 })
@@ -53,7 +53,7 @@ router.post('/pages/Login/pages/Join', (req, res) => {
 
 
 
-router.post('/user/login',(req, res)=>{
+router.post('/pages/login',(req, res)=>{
     console.log('login Router!');
 
     //  let mb_id = req.body
@@ -66,7 +66,7 @@ router.post('/user/login',(req, res)=>{
         if(err) throw err;
 
         console.log('연결됨');
-        // res.redirect('http://localhost:3000');
+        res.json({ result: 'success' })
         conn.execute(or3,{mb_id,mb_pw},(err1,result)=>{
             if(err1) throw err1;
             console.log(result);

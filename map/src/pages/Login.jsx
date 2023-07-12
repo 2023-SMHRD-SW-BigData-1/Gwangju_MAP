@@ -18,17 +18,22 @@ const handleinputid = (e) =>{
 const handleinputpw = (e) =>{
   setMb_Pw(e.target.value)
 }
-const onClickLogin = async () => {
-  try {
-    const result = await axios.post('http://localhost:8888/user/Login', { mb_id, mb_pw });
 
-  console.log(result.data);
-  // 로그인 성공 시 처리
+const onClickLogin = () => {
+  axios.post('http://localhost:8888/pages/login', { mb_id, mb_pw })
+    .then(response => {
+      const { result } = response.data;
 
-} catch (error) {
-  console.error(error);
-  // 로그인 실패 시 처리
-}
+      if (result === 'success') {
+        console.log('Login success!');
+        navigate('/'); // 리디렉션 수행
+      } else if (result === 'failed') {
+        console.log('Login failed');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 
 

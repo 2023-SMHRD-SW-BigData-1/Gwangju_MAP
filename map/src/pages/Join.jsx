@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Label } from 'recharts'
+import { navigator,useNavigate } from 'react-router-dom';
 
 
 
 
 const Join = () => {
-
+  const navigate = useNavigate();
   
   // const result = axios.post('http://localhost:8888/user/Join',{mb_id: 'mb_id',mb_pw: 'mb_pw', mb_nick:'mb_nick'})
 
@@ -27,17 +28,22 @@ const Join = () => {
 
 
 
-  const onClickJogin = async () => {
-    try {
-      const result = await axios.post('http://localhost:8888/pages/Login/pages/Join', { mb_id, mb_pw, mb_nick });
-  
-    console.log(result.data);
-    // 전송 성공 시 처리
-  } catch (error) {
-    console.error(error); 
-    // 전송 실패 시 처리
-  }
-  }
+  const onClickJogin =  () => {
+    axios.post('http://localhost:8888/pages/Login/pages/Join', { mb_id, mb_pw, mb_nick })
+    .then(response => {
+      const { result } = response.data;
+
+      if (result === 'success') {
+        console.log('Join success!');
+        navigate('/pages/Login'); // 리디렉션 수행
+      } else if (result === 'failed') {
+        console.log('Join failed');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
 
 
 
