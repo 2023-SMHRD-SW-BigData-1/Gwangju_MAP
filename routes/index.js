@@ -21,8 +21,8 @@ router.get('/', (req, res) => {
 // router.get('/crimeCounter',(req,res)=>{
 //     // 차트 데이터 받아오기
 //     // 1번 차트 2개 받아오기
-//     let sql = 'select cctv_gu "name", sum(cctv_cnt) "pv" from tbl_cctv where cctv_year<=2017 group by cctv_gu '
-//     let sql2 = 'select crime_region "name", crime_count "uv" from tbl_crime where crime_year=2017'
+//     let sql = `select cctv_year "연도", sum(cctv_cnt) from tbl_cctv where cctv_region like '광산구%' group by cctv_year order by cctv_year; `
+//     let sql2 = 'select crime_count "uv" from tbl_crime where crime_year=2017'
     
 //     oracledb.getConnection(db_config,(err,conn)=>{
         
@@ -36,53 +36,82 @@ router.get('/', (req, res) => {
 //                 if(err) throw err;
 //             })
 //         // })
-//         res.send(result.rows)
+//         let mergedResult = result.rows.map((row, index) => {
+//             return {
+//                 ...row,
+//                 ...result2.rows[index]
+//             };
 
 //         })
-
+//         res.send(mergedResult);
 //     })
 //     })
+//     })
     
-    router.get('/crimeCounter', (req, res) => {
-        // 1번 차트 데이터 받아오기
-        let sql = 'select cctv_gu "name", sum(cctv_cnt) "pv" from tbl_cctv where cctv_year <= 2017 group by cctv_gu';
-        let sql2 = 'select crime_count "uv" from tbl_crime where crime_year = 2017';
+    // router.get('/crimeCounter', (req, res) => {
+    //     // 1번 차트 데이터 받아오기
+    //     let sql = `select cctv_year "연도", sum(cctv_cnt) from tbl_cctv where cctv_region like '광산구%' group by cctv_year order by cctv_year; `;
+    //     let sql2 = `select crime_year "연도", crime_count "uv" from  tbl_crime where crime_region='광산구' order by crime_year`;
     
-        oracledb.getConnection(db_config, (err, conn) => {
-            if (err) throw err;
+    //     oracledb.getConnection(db_config, (err, conn) => {
+    //         if (err) throw err;
     
-            conn.execute(sql, [], (err, result) => {
-                if (err) throw err;
+    //         conn.execute(sql, [], (err, result) => {
+    //             if (err) throw err;
     
-                conn.execute(sql2, [], (err, result2) => {
-                    if (err) throw err;
+    //             conn.execute(sql2, [], (err, result2) => {
+    //                 if (err) throw err;
     
-                    conn.release((err) => {
-                        if (err) throw err;
-                    });
+    //                 conn.release((err) => {
+    //                     if (err) throw err;
+    //                 });
     
-                    // 결과 합치기
-                    let mergedResult = result.rows.map((row, index) => {
-                        return {
-                            ...row,
-                            ...result2.rows[index]
-                        };
-                    });
-                    res.send(mergedResult);
-                });
-            });
-        });
-    });
-
+    //                 // 결과 합치기
+    //                 let mergedResult = result.rows.map((row, index) => {
+    //                     return {
+    //                         ...row,
+    //                         ...result2.rows[index]
+    //                     };
+    //                 });
+    //                 res.send(mergedResult);
+    //             });
+    //         });
+    //     });
+    // });
 
 
    
 // 2번 차트
-// router.get('/lightCounter',(req,res)=>{
+router.get('/lightCounter',(req,res)=>{
+    // 차트 데이터 받아오기
+    // 1번 차트 2개 받아오기
+    let sql = 'select light_region "name", light_cnt "uv" from tbl_light'
+
+
+    oracledb.getConnection(db_config,(err,conn)=>{
+
+        if(err) throw err;
+
+        conn.execute(sql,[],(err,result)=>{
+
+            if(err) throw err;
+
+            conn.release((err)=>{
+                if(err) throw err;
+            })
+
+            res.send(result.rows)
+
+        })
+
+    })
+    })
+
+// 3번 차트
+// router.get('/third',(req,res)=>{
 //     // 차트 데이터 받아오기
 //     // 1번 차트 2개 받아오기
-//     let sql = 'select sum(pcrime) "uv" from tbl_crime where crime_year=2017 group by crime_region'
-//     // let sql2 = 'select sum(pcrime) "uv" from tbl_crime where crime_year=2017 group by crime_region'
+//     let sql = 'select light_region "name", light_cnt "uv" from tbl_light'
 
 
 //     oracledb.getConnection(db_config,(err,conn)=>{
@@ -103,13 +132,57 @@ router.get('/', (req, res) => {
 
 //     })
 //     })
+    // 4번 차트
+    // router.get('/fourth',(req,res)=>{
+        //     // 차트 데이터 받아오기
+        //     // 1번 차트 2개 받아오기
+        //     let sql = ''
+        
+        
+        //     oracledb.getConnection(db_config,(err,conn)=>{
+            
+            //         if(err) throw err;
+            
+            //         conn.execute(sql,[],(err,result)=>{
 
+//             if(err) throw err;
 
+//             conn.release((err)=>{
+//                 if(err) throw err;
+//             })
 
+//             res.send(result.rows)
 
+//         })
 
+//     })
+//     })
 
+// 5번 차트
+//    router.get('/five',(req,res)=>{
+//             // 차트 데이터 받아오기
+//             // 1번 차트 2개 받아오기
+//             let sql = 'dfsf'
+        
+        
+//             oracledb.getConnection(db_config,(err,conn)=>{
+            
+//                     if(err) throw err;
+            
+//                     conn.execute(sql,[],(err,result)=>{
 
+//             if(err) throw err;
+
+//             conn.release((err)=>{
+//                 if(err) throw err;
+//             })
+
+//             res.send(result.rows)
+
+//         })
+
+//     })
+//     })
 
 
 

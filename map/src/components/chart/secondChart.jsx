@@ -46,16 +46,22 @@ const data = [
   },
 ];
 
+
+
 export default class Example extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/mixed-bar-chart-q4hgc';
-
+  
   render() {
+    const { cdata2 } = this.props;
+    console.log(cdata2);
+    // data = cdata2
     return (
+      
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}
           height={300}
-          data={data}
+          data={cdata2}
           margin={{
             top: 20,
             right: 30,
@@ -68,9 +74,9 @@ export default class Example extends PureComponent {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-          <Bar dataKey="amt" stackId="a" fill="#82ca9d" />
-          <Bar dataKey="uv" fill="#ffc658" />
+          {/* <Bar dataKey="pv" stackId="a" fill="#8884d8" /> */}
+          {/* <Bar dataKey="amt" stackId="a" fill="#82ca9d" /> */}
+          <Bar dataKey="uv" fill="#ffc658" name='가로등 설치 현황'/>
         </BarChart>
       </ResponsiveContainer>
     );

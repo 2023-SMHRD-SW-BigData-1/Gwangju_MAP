@@ -12,28 +12,70 @@ import BoardList from './board/BoardList'
 
 const Main = () => {
 
-  // 차트 1번 데이터 받아오기
+  // 차트 데이터 받아오기
   const [ch1,setCh1] = useState({})
   const [ch2,setCh2] = useState({})
+  const [ch5,setCh5] = useState({})
 
+// 1번 차트 
+  // useEffect(()=>{
+  //   axios.get('http://localhost:8888/crimeCounter')
+  //   .then((res)=>{
+  //     // console.log(res.data);
+  //     setCh1(res.data)
+  //   })
+  //   .catch(()=>{})
+  // },[])
+
+  // 2번 차트
   useEffect(()=>{
-    axios.get('http://localhost:8888/crimeCounter')
+    axios.get('http://localhost:8888/lightCounter')
     .then((res)=>{
       console.log(res.data);
-      setCh1(res.data)
+      setCh2(res.data)
     })
     .catch(()=>{})
   },[])
 
+// 3번 차트
+// useEffect(()=>{
+//   axios.get('http://localhost:8888/third')
+//   .then((res)=>{
+//     console.log(res.data);
+//     setCh2(res.data)
+//   })
+//   .catch(()=>{})
+// },[])
 
+// 4번 차트
+// useEffect(()=>{
+//   axios.get('http://localhost:8888/fourth')
+//   .then((res)=>{
+//     console.log(res.data);
+//     setCh2(res.data)
+//   })
+//   .catch(()=>{})
+// },[]) 
+
+// 5번 차트
+// useEffect(()=>{
+//   axios.get('http://localhost:8888/five')
+//   .then((res)=>{
+//     console.log(res.data);
+//     setCh5(res.data)
+//   })
+// .catch(()=>{})
+
+// })
 
 
 
   return (
     <div className='main' style={{backgroundColor : 'F4FFFF'}}>
         <Header/>
+
         <div>
-          <h1></h1>
+          <h1>버튼</h1>
         </div>
         <div className = "FCT" >
           <div className='FCT1' style={{ width : 1100, height : 650}}>
@@ -42,7 +84,7 @@ const Main = () => {
           <h4>범죄율</h4>
             </div>
             <FirstChart cdata={ch1}   /></div>
-            <div className='FCT2' style={{width : 700, height : 650}} ><SecondChart /></div>
+            <div className='FCT2' style={{width : 700, height : 650}} ><SecondChart  cdata2 = {ch2}/></div>
         </div>
 
         <div className='FCM' > 
