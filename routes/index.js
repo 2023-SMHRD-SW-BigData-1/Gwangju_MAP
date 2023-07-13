@@ -79,40 +79,37 @@ router.get('/lightCounter', (req, res) => {
 
 //3번 차트
 router.get('/third', (req, res) => {
-  let sql = `select crime_region "name", crime_count "pv" from tbl_crime where crime_year = :year`;
-  let sql2 = `select crime_region "name", pcrime "uv" from tbl_crime where crime_year = :year`;
-
-  oracledb.getConnection(db_config, (err, conn) => {
-    if (err) throw err;
-
-    conn.execute(sql, [year], (err, result) => {
+   
+  
+    // let sql = `select crime_region "name", crime_count "pv" from tbl_crime where crime_year = :year`;
+    let sql = `select crime_region "subject", pcrime "A" from tbl_crime where crime_year = :year`;
+  
+    oracledb.getConnection(db_config, (err, conn) => {
       if (err) throw err;
-
-      conn.execute(sql2, [year], (err, result2) => {
+  
+      conn.execute(sql, [year], (err, result) => {
         if (err) throw err;
-
-        conn.release((err) => {
-          if (err) throw err;
+  
+       
+          conn.release((err) => {
+            if (err) throw err;
+          });
+  
+      
+            res.send(result.rows);
+          });
+  
         });
 
-        let chart1 = result.rows;
-        let chart2 = result2.rows;
-
-        let mergedResult = chart1.map((row1, index) => {
-          return {
-            ...row1,
-            uv: chart2[index].uv
-          };
-        });
-
-        res.send(mergedResult);
-      });
-    });
   });
-});
+
 
 // 4번차트
+
 router.get('/fourth', (req, res) => {
+    // const year = req.query.year || 2017; // URL 매개변수에서 year 값을 가져옴, 기본값은 2017
+    // const region = req.query.region || '광산구'; // URL 매개변수에서 region 값을 가져옴, 기본값은 '광산구'
+  
     const sql = [
       `select cat1 "살인" from tbl_crime where crime_year = :year and crime_region = :region`,
       `select cat2 "강도" from tbl_crime where crime_year = :year and crime_region = :region`,
@@ -124,33 +121,54 @@ router.get('/fourth', (req, res) => {
     oracledb.getConnection(db_config, (err, conn) => {
       if (err) throw err;
   
-      const bindParams = {
-        year: year,
-        region: region
-      };
+      // outFormat을 NUMBER로 설정하여 숫자 형식으로 조회 결과를 얻음
+      conn.execute("ALTER SESSION SET NLS_NUMERIC_CHARACTERS = '.,'", [], (err) => {
+        if (err) throw err;
   
-      const resultPromises = sql.map(query => {
-        return new Promise((resolve, reject) => {
-          conn.execute(query, bindParams, (err, result) => {
-            if (err) reject(err);
-            resolve(result.rows);
+        const bindParams = {
+          year: year,
+          region: region
+        };
+  
+        const resultPromises = sql.map(query => {
+          return new Promise((resolve, reject) => {
+            conn.execute(query, bindParams, { outFormat: oracledb.OUT_FORMAT_OBJECT }, (err, result) => {
+              if (err) reject(err);
+              resolve(result.rows.map(row => ({ name: Object.keys(row)[0], value: row[Object.keys(row)[0]] })));
+            });
           });
         });
+  
+        Promise.all(resultPromises)
+          .then(results => {
+            conn.release((err) => {
+              if (err) throw err;
+            });
+  
+            const mergedResult = results.reduce((merged, current) => {
+              const mergedKeys = merged.map(obj => obj.name);
+              const newKeys = current.map(obj => obj.name);
+              const uniqueKeys = [...new Set([...mergedKeys, ...newKeys])];
+  
+              return uniqueKeys.map(key => {
+                const matchingObj = merged.find(obj => obj.name === key);
+                const newObj = current.find(obj => obj.name === key);
+                return {
+                  name: key,
+                  value: matchingObj ? matchingObj.value : newObj.value
+                };
+              });
+            });
+  
+            res.send(mergedResult);
+          })
+          .catch(err => {
+            throw err;
+          });
       });
-  
-      Promise.all(resultPromises)
-        .then(results => {
-          conn.release((err) => {
-            if (err) throw err;
-          });
-  
-          res.send(results);
-        })
-        .catch(err => {
-          throw err;
-        });
     });
   });
+
 
 // 5번차트
 router.get('/five', (req, res) => {
