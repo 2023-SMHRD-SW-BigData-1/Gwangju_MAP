@@ -106,7 +106,7 @@ router.get('/lightCounter',(req,res)=>{
 
     })
     })
-
+    
 // 3번 차트
 // router.get('/third',(req,res)=>{
 //     // 차트 데이터 받아오기
@@ -259,5 +259,21 @@ router.post('/pages/login',(req, res)=>{
 
 
 })
+
+router.get("/boardList", (req, res) => {
+    const sqlQuery = "select b_seq, b_title, mb_id, b_at from tbl_board";
+    oracledb.getConnection(db_config,(err,conn)=>{
+        if(err) throw err;
+        conn.execute(sqlQuery,[],(err,result)=>{
+            if(err) throw err;
+            conn.release((err)=>{
+                if(err) throw err;
+            })
+            console.log(result);
+            res.send(result.rows)
+        })
+    })
+  });
+
 
 module.exports = router;
