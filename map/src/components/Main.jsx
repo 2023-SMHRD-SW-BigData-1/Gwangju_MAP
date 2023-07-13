@@ -43,7 +43,7 @@ const Main = () => {
 useEffect(()=>{
   axios.get('http://localhost:8888/third')
   .then((res)=>{
-    // console.log(res.data);
+    console.log(res.data);
     setCh3(res.data)
   })
   .catch(()=>{})
