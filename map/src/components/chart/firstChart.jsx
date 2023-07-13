@@ -69,7 +69,7 @@ const Example = ({ cdata, cdata1 }) => {
 
 // console.log(data,ch1);
 data = cdata 
-console.log(data);
+// console.log(data);
 
 return (
   <ResponsiveContainer width="100%" height="100%">
@@ -91,8 +91,8 @@ return (
           <Tooltip />
           <Legend />
           {/* <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" /> */}
-          <Bar dataKey="pv" barSize={20} fill="#413ea0"  name='범죄건수'/>
-           <Line type="monotone" dataKey="uv" stroke="#ff7300" name='CCTV 설치현황' /> 
+          <Bar dataKey="pv" barSize={20} fill="#413ea0"  name='CCTV 설치현황'/>
+           <Line type="monotone" dataKey="uv" stroke="#ff7300" name='범죄 검거현황' /> 
           {/* <Scatter dataKey="cnt" fill="red" /> */}
           </ComposedChart>
     </ResponsiveContainer>

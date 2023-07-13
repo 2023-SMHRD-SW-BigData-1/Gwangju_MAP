@@ -23,25 +23,25 @@ const data = [
   {
     name: 'Page D',
     uv: 2780,
-    pv: 3908,
+    pv: 39.07,
     amt: 2000,
   },
   {
     name: 'Page E',
-    uv: 1890,
     pv: 4800,
+    uv: 18.89,
     amt: 2181,
   },
   {
     name: 'Page F',
-    uv: 2390,
     pv: 3800,
+    uv: 23.66,
     amt: 2500,
   },
   {
     name: 'Page G',
-    uv: 3490,
     pv: 4300,
+    uv: 34.22,
     amt: 2100,
   },
 ];
@@ -50,6 +50,8 @@ export default class Example extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/simple-bar-chart-tpz8r';
 
   render() {
+    const { cdata3 } = this.props;
+    console.log(cdata3);  
     return (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
@@ -68,8 +70,8 @@ export default class Example extends PureComponent {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
+          <Bar dataKey="pv" fill="#8884d8" name='범죄발생건수' />
+          <Bar dataKey="uv" fill="#82ca9d"  name='범죄율'/>
         </BarChart>
       </ResponsiveContainer>
     );
