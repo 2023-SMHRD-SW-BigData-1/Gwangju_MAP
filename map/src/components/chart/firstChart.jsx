@@ -14,63 +14,65 @@ import {
   Scatter,
   ResponsiveContainer,
 } from 'recharts';
-const Example = ({ Ch1 }) => {
+const Example = ({ cdata, cdata1 }) => {
   
   
   
   // cctv 설치 수 => pv
   // 범죄율 => uv
-  
-  useEffect(() => {
-    console.log('첫 렌더링');
-    axios
-      .get('http://localhost:8888/crimeCounter')
-      .then((res) => {
-        data = (res.data); 
-      })
-      .catch(() => {});
-  }, []);
+  let [ch1,setCh1]=useState([])
 
   
+  
+  
+  // console.log(cdata); 
+  // console.log(cdata1); 
+  
 
-
-
-let data = [
-  {
-    name: '광산구',
-    uv: 300,  // 범죄건수
-    pv: 3000  // cctv 현황 // 범죄율
-  },
-  {
-    name: '남구',
-    uv: 300,
-    pv: 1967
-  },
-  {
+  
+  let data = [
+    
+    {
+      name: '광산구',
+      uv: 10,  // 범죄건수
+      pv:  10 // cctv 현황 // 범죄율
+      
+    },
+    {
+      name: '남구',
+      uv: 10,
+      pv: 10
+    },
+    {
     name: '서구',
-    uv: 820,
-    pv: 3098
+    uv: 10,
+    pv: 10
   },
   {
     name: '북구',
-    uv: 520,
-    pv: 1500,
+    uv: 10,
+    pv: 10,
   },
   {
     name: '동구',
-    uv: 720,
-    pv: 3008
+    uv: 10,
+    pv: 10
   }
   
 ];
 
 
+// var data = ch1.map(item => ({
+//   name: item.name,
+//   pv: item.pv
+// }));
 
+// console.log(data,ch1);
+data = cdata 
+console.log(data);
 
-
-
-    return (
-      <ResponsiveContainer width="100%" height="100%">
+return (
+  <ResponsiveContainer width="100%" height="100%">
         <ComposedChart
           width={500}
           height={500}
@@ -90,7 +92,7 @@ let data = [
           <Legend />
           {/* <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" /> */}
           <Bar dataKey="pv" barSize={20} fill="#413ea0"  name='CCTV 설치현황'/>
-          <Line type="monotone" dataKey="uv" stroke="#ff7300" name='범죄율' />
+           <Line type="monotone" dataKey="uv" stroke="#ff7300" name='범죄율' /> 
           {/* <Scatter dataKey="cnt" fill="red" /> */}
           </ComposedChart>
     </ResponsiveContainer>
