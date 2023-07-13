@@ -15,58 +15,60 @@ const Main = () => {
   // 차트 데이터 받아오기
   const [ch1,setCh1] = useState({})
   const [ch2,setCh2] = useState({})
+  const [ch3,setCh3] = useState({})
+  const [ch4,setCh4] = useState({})
   const [ch5,setCh5] = useState({})
 
 // 1번 차트 
-  // useEffect(()=>{
-  //   axios.get('http://localhost:8888/crimeCounter')
-  //   .then((res)=>{
-  //     // console.log(res.data);
-  //     setCh1(res.data)
-  //   })
-  //   .catch(()=>{})
-  // },[])
+  useEffect(()=>{
+    axios.get('http://localhost:8888/crimeCounter')
+    .then((res)=>{
+      // console.log(res.data);
+      setCh1(res.data)
+    })
+    .catch(()=>{})
+  },[])
 
   // 2번 차트
   useEffect(()=>{
     axios.get('http://localhost:8888/lightCounter')
     .then((res)=>{
-      console.log(res.data);
+      // console.log(res.data);
       setCh2(res.data)
     })
     .catch(()=>{})
   },[])
 
 // 3번 차트
-// useEffect(()=>{
-//   axios.get('http://localhost:8888/third')
-//   .then((res)=>{
-//     console.log(res.data);
-//     setCh2(res.data)
-//   })
-//   .catch(()=>{})
-// },[])
+useEffect(()=>{
+  axios.get('http://localhost:8888/third')
+  .then((res)=>{
+    // console.log(res.data);
+    setCh3(res.data)
+  })
+  .catch(()=>{})
+},[])
 
 // 4번 차트
-// useEffect(()=>{
-//   axios.get('http://localhost:8888/fourth')
-//   .then((res)=>{
-//     console.log(res.data);
-//     setCh2(res.data)
-//   })
-//   .catch(()=>{})
-// },[]) 
+useEffect(()=>{
+  axios.get('http://localhost:8888/fourth')
+  .then((res)=>{
+    console.log(res.data);
+    setCh4(res.data)
+  })
+  .catch(()=>{})
+},[]) 
 
 // 5번 차트
-// useEffect(()=>{
-//   axios.get('http://localhost:8888/five')
-//   .then((res)=>{
-//     console.log(res.data);
-//     setCh5(res.data)
-//   })
-// .catch(()=>{})
+useEffect(()=>{
+  axios.get('http://localhost:8888/five')
+  .then((res)=>{
+    // console.log(res.data);
+    setCh5(res.data)
+  })
+.catch(()=>{})
 
-// })
+},[])
 
 
 
@@ -88,9 +90,9 @@ const Main = () => {
         </div>
 
         <div className='FCM' > 
-        <div className='FCM1' style={{width : 800, height : 500}}> <ThirdChart/>  </div>
-        <div className='FCM2' style={{ width : 700, height : 600}}> <FourthChart/> </div>
-        <div className='FCM3' style={{ width : 400, height : 400}}> <FiveChart/> </div>
+        <div className='FCM1' style={{width : 800, height : 500}}> <ThirdChart cdata3={ch3} />  </div>
+        <div className='FCM2' style={{ width : 700, height : 600}}> <FourthChart cdata4={ch4} /> </div>
+        <div className='FCM3' style={{ width : 400, height : 400}}> <FiveChart cdata5={ch5}/> </div>
     </div>  
 
     <div className='Board'>

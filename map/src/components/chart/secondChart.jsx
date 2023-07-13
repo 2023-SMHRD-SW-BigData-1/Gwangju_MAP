@@ -53,7 +53,7 @@ export default class Example extends PureComponent {
   
   render() {
     const { cdata2 } = this.props;
-    console.log(cdata2);
+    // console.log(cdata2);
     // data = cdata2
     return (
       
