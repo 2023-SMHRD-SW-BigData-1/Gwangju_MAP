@@ -19,7 +19,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
   return (
     <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-      {`${(percent * 100).toFixed(0)}%`}
+      {`${(percent * 100).toFixed(2)}%`}
     </text>
   );
 };
@@ -29,10 +29,10 @@ export default class Example extends PureComponent {
 
   render() {
     const { cdata4 } = this.props;
-    // console.log(cdata4);
+    console.log(cdata4);
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={800} height={800}>
+        <PieChart width={400} height={400}>
           <Pie
             data={cdata4}
             cx="50%"
