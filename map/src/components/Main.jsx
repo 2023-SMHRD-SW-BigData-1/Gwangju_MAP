@@ -8,7 +8,8 @@ import FourthChart from './chart/fourthChart'
 import FiveChart from './chart/fiveChart'
 import axios from 'axios'
 import BoardList from './board/BoardList'
-
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const Main = () => {
 
@@ -76,9 +77,10 @@ useEffect(()=>{
     <div className='main' style={{backgroundColor : 'F4FFFF'}}>
         <Header/>
 
-        <div>
-          <h1>버튼</h1>
-        </div>
+         
+
+
+        
         <div className = "FCT" >
           <div className='FCT1' style={{ width : 1100, height : 650}}>
             <div className='FCT1T'>
