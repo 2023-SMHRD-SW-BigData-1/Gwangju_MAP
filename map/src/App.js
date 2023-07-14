@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Join from './pages/Join';
 import BoardList from './components/board/BoardList';
 import Write from './components/board/Write';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Route path='/' element={<Main/>}></Route>
       <Route path='/pages/Login' element={<Login/>}></Route>
       <Route path='/pages/Login/pages/Join' element={<Join/>}></Route>
-        <Route path='/board/BoardList' element={<BoardList/>}></Route>
+        {/* <Route path='/' element={<BoardList/>}></Route> */}
       </Routes>
       
 

@@ -4,6 +4,8 @@ const oracledb = require('oracledb');
 const db_config = require('../config/dbconfig');
 const path = require('path');
 const bodyParser = require('body-parser');
+router.use(express.json());
+
 
 router.get('/', (req, res) => {
   console.log('index Router');
@@ -281,23 +283,76 @@ router.post('/pages/login', (req, res) => {
 
 
 
-router.get("/boardList", (req, res) => {
-    const sqlQuery = "select b_seq, b_title, mb_id, b_at from tbl_board";
-    oracledb.getConnection(db_config,(err,conn)=>{
-        if(err) throw err;
-        conn.execute(sqlQuery,[],(err,result)=>{
-            if(err) throw err;
-            conn.release((err)=>{
-                if(err) throw err;
-                
-                            res.send(result.rows)
-                
-                        })
-                
-                    })
-                    })
-                    
-            })
+
+
+
+router.get('/list', (req, res) => {
+  let sqlQuery = 'select * from tbl_board order by b_at desc';
+
+  oracledb.getConnection(db_config, (err, conn) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to connect to the database.");
+    }
+    conn.execute(sqlQuery, [], (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send("Failed to execute the query.");
+      }
+      res.send(result.rows);
+      conn.close((err) => {
+        if (err) {
+          console.error(err);
+        }
+      });
+    });
+  });
+});
+
+router.post("/b_insert", (req, res) => {
+  var title = req.body.title;
+  var region = req.body.region;
+  var content = req.body.content;
+
+  const sqlQuery =
+    "INSERT INTO tbl_board (b_seq, b_title, b_content, mb_id, b_region) values (num_board.nextval, :title, :content, 'btest', :region)";
+  oracledb.getConnection(db_config, (err, conn) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to connect to the database.");
+    }
+    conn.execute(
+      sqlQuery,
+      { title: title, content: content, region: region },
+      { autoCommit: true },
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send("Failed to execute the query.");
+        }
+        res.send(result);
+        conn.close((err) => {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    );
+  });
+});
+
+// app.post("/b_update", (req, res) => {
+//   var title = req.body.title;
+//   var region = req.body.region;
+//   var content = req.body.content;
+
+//   const sqlQuery =
+//     "UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT = ?, UPDATER_ID) FROM (?,?,artistJay);";
+//   db.query(sqlQuery, [title, region, content], (err, result) => {
+//     res.send(result);
+//   });
+// });
+
 
 
 module.exports = router;
