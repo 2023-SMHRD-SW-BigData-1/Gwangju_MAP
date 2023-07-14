@@ -8,6 +8,7 @@ import FourthChart from './chart/fourthChart'
 import FiveChart from './chart/fiveChart'
 import axios from 'axios'
 import BoardList from './board/BoardList'
+import Write from './board/Write'
 // import Dropdown from 'react-bootstrap/Dropdown';
 // import DropdownButton from 'react-bootstrap/DropdownButton';
 
@@ -159,7 +160,8 @@ const Main = () => {
     </div>  
 
     <div className='Board'>
-    {/* <BoardList dbl_data={dbl}></BoardList> */}
+    <BoardList />
+    <Write/>
     
       </div>
 
