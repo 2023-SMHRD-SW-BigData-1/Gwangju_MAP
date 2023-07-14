@@ -8,6 +8,9 @@ import FourthChart from './chart/fourthChart'
 import FiveChart from './chart/fiveChart'
 import axios from 'axios'
 import BoardList from './board/BoardList'
+// import gMap from '../pages/Gmap'
+
+
 // import Dropdown from 'react-bootstrap/Dropdown';
 // import DropdownButton from 'react-bootstrap/DropdownButton';
 
@@ -162,6 +165,8 @@ const Main = () => {
     {/* <BoardList dbl_data={dbl}></BoardList> */}
     
       </div>
+      
+{/* <gMap></gMap> */}
 
     </div>  
   )
