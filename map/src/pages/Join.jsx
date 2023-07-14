@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { Label } from 'recharts';
-import { navigator, useNavigate } from 'react-router-dom';
+import './Join.css';
+import { useNavigate } from 'react-router-dom';
 
 const Join = () => {
   const navigate = useNavigate();
@@ -41,28 +40,32 @@ const Join = () => {
   };
 
   return (
-    <div>
-      <br />
-      <div className="jt">회원가입</div>
-      <br />
-      <div className="jt">닉네임</div>
-      <div className="jw">
-        <input className="input" />
+    <div className="container">
+      <div className="content">
+        <div className="jt">회원가입</div>
+        <div className="jtm">닉네임</div>
+        <div className="inputWrap">
+          <input className="jput" />
+        </div>
+        <div className="jtm">아이디</div>
+        <div className="inputWrap">
+          <input className="jput" />
+        </div>
+        <div className="jtm">비밀번호</div>
+        <div className="inputWrap">
+          <input className="jput" />
+        </div>
+        <button className="btn" type="button">
+          가입하기
+        </button>
+        <br />
+        <br />
+        <div>
+          <a id="acount" href="" target="_self">
+            로그인
+          </a>
+        </div>
       </div>
-      <br />
-      <div className="jt">아이디</div>
-      <div className="jw">
-        <input className="js" />
-      </div>
-      <br />
-      <div className="jt">비밀번호</div>
-      <div className="jw">
-        <input className="js" />
-      </div>
-      <br />
-      <button type="submit" onClick={onClickJogin}>가입하기</button>
-      <br />
-      <br />
     </div>
   );
 };

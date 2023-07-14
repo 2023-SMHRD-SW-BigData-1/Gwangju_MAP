@@ -40,35 +40,31 @@ const onClickLogin = () => {
 
    
 return (
-    <div style={{ textAlign: 'center' }}>
-      <br />
-      <div className="inputTitle1">회원가입</div>
-      <br />
-      <div className="inputTitle">닉네임</div>
-      <div className="inputWrap">
-        <input className="input" />
+  <div className="lpage">
+    <div className="titleW">
+      <div className="ht">한눈에 보이는 안전정보</div>
+      <div className="ht">광주 안전지도</div>
+    </div>
+    <br />
+    <div className="contentWrap">
+      <div className="inputid">아이디</div>
+      <div className="inputW">
+        <input className="lo" onChange={handleinputid} />
       </div>
       <br />
-      <div className="inputTitle">아이디</div>
-      <div className="inputWrap">
-        <input className="input" />
-      </div>
-      <br />
-      <div className="inputTitle">비밀번호</div>
-      <div className="inputWrap">
-        <input className="input" />
-      </div>
-      <br />
-      <button className="w-btn w-btn-indigo" type="button">
-        가입하기
-      </button>
-      <br />
-      <br />
-      <div>
-        <a id="acount" href="" target="_self">로그인</a>
+      <div className="inputpw">비밀번호</div>
+      <div className="inputW">
+        <input className="lo" type="password" onChange={handleinputpw} />
       </div>
     </div>
-  );
+    <br />
+    <button className="w-btn" type="button" onClick={onClickLogin}> 로그인 </button>
+    <br />
+    <div>
+      <Link to="pages/Join">회원가입</Link>
+    </div>
+  </div>
+);
 };
 
 export default Login;

@@ -223,7 +223,7 @@ router.post('/pages/login', (req, res) => {
   console.log('login Router!');
 
   let { mb_id, mb_pw } = req.body;
-  let or3 = "select * from tbl_member where mb_id  = :mb_id and MB_PW = :mb_pw";
+  let or3 = "select * from tbl_member where MB_ID  = :mb_id and MB_PW = :mb_pw";
 
   oracledb.getConnection(db_config, (err, conn) => {
     if (err)  throw err;
@@ -234,7 +234,7 @@ router.post('/pages/login', (req, res) => {
       if (err1) {
         console.error(err1);
         res.json({ result: 'failed' });
-        return;
+        
       }
       console.log(result);
       console.log(result.rows[0]);
