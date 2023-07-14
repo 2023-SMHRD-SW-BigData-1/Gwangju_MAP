@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Join from './pages/Join';
 import BoardList from './components/board/BoardList';
 import Write from './components/board/Write';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
