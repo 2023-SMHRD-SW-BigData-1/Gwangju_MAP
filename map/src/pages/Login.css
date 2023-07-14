@@ -2,7 +2,7 @@
 /*Login.css
 */
 
-.lpage{
+.page{
     position: absolute;
   top: 0;
   bottom: 0;
@@ -20,14 +20,14 @@
     flex-direction: column;
   }
   
-  .titleW{
+  .titleWrap{
     margin-top: 87px;
     font-size: 26px;
   font-weight: bold;
   color: #262626;
   }
   
-  .inputW{
+  .inputWrap{
     display: flex;
     border-radius: 8px;
     padding: 16px;
@@ -36,7 +36,7 @@
     border: 1px solid lightblue;
   }
   
-  .lo {
+  .input {
     width: 100%;
     outline: none;
     border: none;
@@ -59,6 +59,7 @@
   }   
   
   
+  
   .w-btn {
     position: relative;
     border: none;
@@ -72,13 +73,13 @@
     transition: 0.25s;
   }
   
-  /* div { color : blue; } */
+  div { color : blue; }
   
-  .ht{
+  .title{
     text-indent:50px
   }
   
-  .ht { 
+  .title { 
     font-size: x-large;
     line-height: normal;
   

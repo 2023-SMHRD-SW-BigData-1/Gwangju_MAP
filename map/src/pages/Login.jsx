@@ -2,7 +2,6 @@ import React,{ useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { navigator,useNavigate } from 'react-router-dom';
-import './Login.css'
 const Login = () => {
   const navigate = useNavigate();
 
@@ -38,33 +37,56 @@ const onClickLogin = () => {
 }
 
 
-   
+  
+  
 return (
-  <div className="lpage">
-    <div className="titleW">
-      <div className="ht">한눈에 보이는 안전정보</div>
-      <div className="ht">광주 안전지도</div>
-    </div>
-    <br />
-    <div className="contentWrap">
-      <div className="inputid">아이디</div>
-      <div className="inputW">
-        <input className="lo" onChange={handleinputid} />
-      </div>
-      <br />
-      <div className="inputpw">비밀번호</div>
-      <div className="inputW">
-        <input className="lo" type="password" onChange={handleinputpw} />
-      </div>
-    </div>
-    <br />
-    <button className="w-btn" type="button" onClick={onClickLogin}> 로그인 </button>
-    <br />
-    <div>
-      <Link to="pages/Join">회원가입</Link>
-    </div>
-  </div>
-);
-};
+     
+  <div class="page">
+     
+     <div className="titleWrap" >
+       <center>
 
-export default Login;
+
+       <div className="title">한눈에 보이는 안전정보</div>
+       <div className="title">
+      광주 안전지도</div>
+       </center>
+    
+     </div>
+     <br></br>
+     <div className="contentWrap">
+
+       <div className="inputTitle">아이디</div>
+       <div className="inputWrap">
+        <input type='text' className="input" name='id' value={mb_id} onChange ={handleinputid} />
+        </div>
+      
+        <br></br>
+      
+       <div className="inputTitle">비밀번호</div>
+       <div className="inputWrap">
+       <input type='password' className="input" value={mb_pw} onChange ={handleinputpw}/>
+        </div>
+
+       <div className="errorMessageWrap">
+          </div>
+       </div>
+
+     <br></br>
+
+     <button type="submit" onClick={onClickLogin}>로그인</button>
+
+<br></br>
+
+<div>
+<center>
+
+<Link to='pages/Join'><h3>회원가입</h3></Link>
+</center>
+</div> 
+
+       </div>
+ );
+}
+
+export default Login

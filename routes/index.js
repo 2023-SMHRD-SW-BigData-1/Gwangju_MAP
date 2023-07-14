@@ -219,29 +219,48 @@ router.post('/pages/Login/pages/Join', (req, res) => {
   });
 });
 
+
 router.post('/pages/login', (req, res) => {
   console.log('login Router!');
 
   let { mb_id, mb_pw } = req.body;
-  let or3 = "select * from tbl_member where MB_ID  = :mb_id and MB_PW = :mb_pw";
+  let or3 = "select * from TBL_MEMBER where MB_ID = :mb_id";
 
   oracledb.getConnection(db_config, (err, conn) => {
-    if (err)  throw err;
+    if (err) throw err;
 
     console.log('연결됨');
-    
-    conn.execute(or3, { mb_id, mb_pw }, (err1, result) => {
+
+    conn.execute(or3, { mb_id }, (err1, result) => {
       if (err1) {
         console.error(err1);
         res.json({ result: 'failed' });
-        
+        return;
       }
+
+      if (result.rows.length === 0) {
+        // 입력된 아이디가 존재하지 않는 경우
+        console.log('User not found');
+        res.json({ result: 'failed' });
+        return;
+      }
+
+      const user = result.rows[0];
+
+      if (user.MB_PW !== mb_pw) {
+        // 비밀번호가 일치하지 않는 경우
+        console.log('Incorrect password');
+        res.json({ result: 'failed' });
+        return;
+      }
+
       console.log(result);
-      console.log(result.rows[0]);
       res.json({ result: 'success' });
     });
   });
 });
+
+
 
 router.get("/boardList", (req, res) => {
     const sqlQuery = "select b_seq, b_title, mb_id, b_at from tbl_board";

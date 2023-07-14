@@ -40,34 +40,52 @@ const Join = () => {
   };
 
   return (
-    <div className="container">
-      <div className="content">
-        <div className="jt">회원가입</div>
-        <div className="jtm">닉네임</div>
-        <div className="inputWrap">
-          <input className="jput" />
-        </div>
-        <div className="jtm">아이디</div>
-        <div className="inputWrap">
-          <input className="jput" />
-        </div>
-        <div className="jtm">비밀번호</div>
-        <div className="inputWrap">
-          <input className="jput" />
-        </div>
-        <button className="btn" type="button">
-          가입하기
-        </button>
-        <br />
-        <br />
-        <div>
-          <a id="acount" href="" target="_self">
-            로그인
-          </a>
-        </div>
+
+    <React.Fragment>
+       
+   <center>
+       <br></br>
+       <div className="inputTitle1">회원가입</div>
+    
+       <br></br>
+      
+       <div className="inputTitle">닉네임</div>
+     <div className="inputWrap">
+     <input className="input" value={mb_nick} onChange ={handleinputnick} />
       </div>
-    </div>
-  );
-};
+
+   <br></br>
+
+       <div className="inputTitle">아이디</div>
+     <div className="inputWrap">
+      <input className="input" value={mb_id} onChange ={handleinputid} />
+      </div>
+    
+      <br></br>
+    
+     <div className="inputTitle">비밀번호</div>
+     <div className="inputWrap">
+     <input className="input" value={mb_pw} onChange ={handleinputpw} />
+      </div>
+
+   <br></br>
+
+   <button className="w-btn w-btn-indigo" type="button" onClick={onClickJogin}>
+   가입하기
+</button>
+
+<br></br>
+<br></br>
+
+<div>
+<a id="acount" href="" target="_self">로그인</a>
+</div> 
+</center>
+    </React.Fragment>
+
+  )
+
+}
+
 
 export default Join;

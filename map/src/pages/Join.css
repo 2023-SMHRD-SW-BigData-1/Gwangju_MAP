@@ -1,38 +1,123 @@
-.container {
+.page{
+    position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 500px;
+    padding: 0 20px;
+  
+  left: 50%;
+  transform: translate(-50%, 0);
+  
+    background-color: #F7F7F7;
+  
+  overflow: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40vh; 
+    flex-direction: column;
   }
   
-  .content {
-    text-align: center;
+  .titleWrap{
+    margin-top: 87px;
+    font-size: 26px;
+  font-weight: bold;
+  color: #262626;
   }
   
-  .jt {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px;
+  .inputWrap{
+    width: 30%;
+    display: flex;
+    border-radius: 4px;
+    padding: 16px;
+    margin-top: 8px;
+    background-color: white;
+    border: 1px solid lightblue;
   }
   
-  .jtm {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-  
-  .inputWrap {
-    margin-bottom: 16px;
-  }
-  
-  .jput {
-    width: 200px;
-    padding: 8px;
-  }
-  
-  .btn {
-    background-color: indigo;
-    color: white;
+  .input {
+    width: 100%;
+    outline: none;
     border: none;
-    padding: 8px 16px;
-    cursor: pointer;
+    height: 17px;
+    font-size: 14px;
+  font-weight: 400;
+  }
+  
+  #btnSubmit{
+    width:100px;
+    margin:auto;
+    display:block;
+  }   
+  
+  
+  #acount{
+    width:100px;
+    margin:auto;
+   
+  }   
+  
+  
+  
+  .w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+  }
+  
+  .w-btn-outline {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+  }
+  
+  .w-btn-indigo {
+    background-color: rgb(224, 236, 247);
+    color: #1e6b7b;
+  }
+  
+  /* .w-btn-indigo-outline {
+    border: 3px solid aliceblue;
+    color: #1e6b7b;
+  } */
+  
+  /* .w-btn-indigo-outline:hover {
+    color: #1e6b7b;
+    background: aliceblue;
+  } */
+  
+  
+  
+  .title{
+    text-indent:50px
+  }
+  
+  .title { 
+    font-size: x-large;
+    line-height: normal;
+  
+  }
+  /* .title2 { font-size: xx-large; } */
+  
+  .normal{
+  
+    
+    line-height: normal;
+  
+  }
+  
+  .inputTitle1{
+  
+    font-size: x-large;
+  
   }
