@@ -1,0 +1,93 @@
+
+/*Login.css
+*/
+
+.lpage{
+    position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 500px;
+    padding: 0 20px;
+  
+  left: 50%;
+  transform: translate(-50%, 0);
+  
+    background-color: #F7F7F7;
+  
+  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .titleW{
+    margin-top: 87px;
+    font-size: 26px;
+  font-weight: bold;
+  color: #262626;
+  }
+  
+  .inputW{
+    display: flex;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 8px;
+    background-color: white;
+    border: 1px solid lightblue;
+  }
+  
+  .lo {
+    width: 100%;
+    outline: none;
+    border: none;
+    height: 17px;
+    font-size: 14px;
+  font-weight: 400;
+  }
+  
+  #btnSubmit{
+    width:100px;
+    margin:auto;
+    display:block;
+  }   
+  
+  
+  #acount{
+    width:100px;
+    margin:auto;
+   
+  }   
+  
+  
+  .w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+  }
+  
+  /* div { color : blue; } */
+  
+  .ht{
+    text-indent:50px
+  }
+  
+  .ht { 
+    font-size: x-large;
+    line-height: normal;
+  
+  }
+  /* .title2 { font-size: xx-large; } */
+  
+  .normal{
+  
+    
+    line-height: normal;
+  
+  }

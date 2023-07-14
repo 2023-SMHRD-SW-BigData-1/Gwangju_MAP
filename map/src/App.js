@@ -9,8 +9,9 @@ import Write from './components/board/Write';
 function App() {
   return (
     <div className="warp">
-      <BoardList></BoardList>
-      <Write></Write>
+      {/* <BoardList></BoardList> */}
+      {/* <Write></Write> */}
+        {/* <Route path='/board/BoardList' element={<BoardList/>}></Route> */}
       <Routes>
       <Route path='/' element={<Main/>}></Route>
       <Route path='/pages/Login' element={<Login/>}></Route>

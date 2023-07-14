@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { navigator,useNavigate } from 'react-router-dom';
+import './Login.css'
 const Login = () => {
   const navigate = useNavigate();
 
@@ -37,21 +38,37 @@ const onClickLogin = () => {
 }
 
 
-  
-  
-  return (
-    <div>
-      <h1>안전지도 회원가입</h1>
-      <label>아이디 입력</label>
-        <input type="text" name='id' value={mb_id} onChange ={handleinputid}/><br/>
-      <label>비밀번호 입력</label>
-        <input type="password" name='pw' value={mb_pw} onChange ={handleinputpw} />
-        <button type="submit" onClick={onClickLogin}>로그인</button>
-        <Link to='pages/Join'><h3>회원가입</h3></Link>
-
-
+   
+return (
+    <div style={{ textAlign: 'center' }}>
+      <br />
+      <div className="inputTitle1">회원가입</div>
+      <br />
+      <div className="inputTitle">닉네임</div>
+      <div className="inputWrap">
+        <input className="input" />
+      </div>
+      <br />
+      <div className="inputTitle">아이디</div>
+      <div className="inputWrap">
+        <input className="input" />
+      </div>
+      <br />
+      <div className="inputTitle">비밀번호</div>
+      <div className="inputWrap">
+        <input className="input" />
+      </div>
+      <br />
+      <button className="w-btn w-btn-indigo" type="button">
+        가입하기
+      </button>
+      <br />
+      <br />
+      <div>
+        <a id="acount" href="" target="_self">로그인</a>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Join;

@@ -1,0 +1,110 @@
+.jpage{
+    position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 500px;
+    padding: 0 20px;
+  
+  left: 50%;
+  transform: translate(-50%, 0);
+  
+    background-color: #F7F7F7;
+  
+  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .titleWrap{
+    margin-top: 87px;
+    font-size: 26px;
+  font-weight: bold;
+  color: #262626;
+  }
+  
+  .jw{
+    width: 30%;
+    display: flex;
+    border-radius: 4px;
+    padding: 16px;
+    margin-top: 8px;
+    background-color: white;
+    border: 1px solid lightblue;
+  }
+  
+  .js {
+    width: 100%;
+    outline: none;
+    border: none;
+    height: 17px;
+    font-size: 14px;
+  font-weight: 400;
+  }
+  
+  #btnSubmit{
+    width:100px;
+    margin:auto;
+    display:block;
+  }   
+  
+  
+  #acount{
+    width:100px;
+    margin:auto;
+   
+  }   
+  
+  
+  
+  .w_btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+  }
+  
+  .w_btn_outline {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+  }
+  
+  .w-btn-indigo {
+    background-color: rgb(224, 236, 247);
+    color: #1e6b7b;
+  }
+  
+ 
+  
+
+  
+  .title{
+    text-indent:50px
+  }
+  
+  .title { 
+    font-size: x-large;
+    line-height: normal;
+  }
+  
+  .normal{
+    line-height: normal;
+  }
+  
+  .jt{
+  
+    font-size: x-large;
+  
+  }

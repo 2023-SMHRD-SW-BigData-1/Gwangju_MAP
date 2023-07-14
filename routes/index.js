@@ -223,17 +223,22 @@ router.post('/pages/login', (req, res) => {
   console.log('login Router!');
 
   let { mb_id, mb_pw } = req.body;
-  let or3 = "select * from TBL_MEMBER where MB_ID = :MB_ID and MB_PW = :MB_PW";
+  let or3 = "select * from tbl_member where mb_id  = :mb_id and MB_PW = :mb_pw";
 
   oracledb.getConnection(db_config, (err, conn) => {
-    if (err) throw err;
+    if (err)  throw err;
 
     console.log('연결됨');
-    res.json({ result: 'success' });
+    
     conn.execute(or3, { mb_id, mb_pw }, (err1, result) => {
-      if (err1) throw err1;
+      if (err1) {
+        console.error(err1);
+        res.json({ result: 'failed' });
+        return;
+      }
       console.log(result);
       console.log(result.rows[0]);
+      res.json({ result: 'success' });
     });
   });
 });

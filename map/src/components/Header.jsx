@@ -16,9 +16,9 @@ const Header = () => {
         </div>
         </div>
 
-        <div className='tlt2' style={{ borderBottom: '1px solid lightgray'}}>
+        {/* <div className='tlt2' style={{ borderBottom: '1px solid lightgray'}}>
         <h2>현재 사용자의 위치 : 광주 동구</h2>
-      </div>
+      </div> */}
 
 
     </div>
