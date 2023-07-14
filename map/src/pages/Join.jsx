@@ -78,7 +78,7 @@ const Join = () => {
 <br></br>
 
 <div>
-<a id="acount" href="" target="_self">로그인</a>
+{/* <a id="acount" href="" target="_self">로그인</a> */}
 </div> 
 </center>
     </React.Fragment>

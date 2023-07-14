@@ -6,6 +6,9 @@ import Join from './pages/Join';
 import BoardList from './components/board/BoardList';
 import Write from './components/board/Write';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Kakaomap from '../src/pages/kakaomap'
+import { useEffect } from 'react';
+
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
       <Route path='/pages/Login/pages/Join' element={<Join/>}></Route>
         {/* <Route path='/' element={<BoardList/>}></Route> */}
       </Routes>
+    <Kakaomap/>
       
 
     </div>
