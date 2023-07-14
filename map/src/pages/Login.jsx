@@ -71,4 +71,4 @@ return (
   );
 };
 
-export default Join;
+export default Login;
