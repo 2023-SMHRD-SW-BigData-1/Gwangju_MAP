@@ -18,7 +18,7 @@ const Main = () => {
   const [ch3,setCh3] = useState({})
   const [ch4,setCh4] = useState({})
   const [ch5,setCh5] = useState({})
-
+  
 // 1번 차트 
   useEffect(()=>{
     axios.get('http://localhost:8888/crimeCounter')
@@ -67,8 +67,8 @@ useEffect(()=>{
     setCh5(res.data)
   })
 .catch(()=>{})
-
 },[])
+
 
 
 
@@ -96,7 +96,8 @@ useEffect(()=>{
     </div>  
 
     <div className='Board'>
-    <BoardList></BoardList>
+    {/* <BoardList dbl_data={dbl}></BoardList> */}
+    
       </div>
 
       <div className='FCF'>
