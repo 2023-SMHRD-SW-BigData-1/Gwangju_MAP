@@ -15,8 +15,25 @@ router.get('/', (req, res) => {
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-let region = '광산구';
-let year = 2017;
+var region = '광산구';
+var year = 2017;
+
+router.post('/year', (req, res) => {
+  const { year: queryYear } = req.body;
+  console.log(queryYear);
+  year = queryYear;
+  res.sendStatus(200);
+});
+
+router.post('/region', (req, res) => {
+  const { region: queryRegion } = req.body;
+  console.log(queryRegion);
+  region = queryRegion;
+  res.sendStatus(200);
+});
+
+
+
 
 // 1번 차트
 router.get('/crimeCounter', (req, res) => {
@@ -85,10 +102,11 @@ router.get('/third', (req, res) => {
   
     // let sql = `select crime_region "name", crime_count "pv" from tbl_crime where crime_year = :year`;
     let sql = `select crime_region "subject", pcrime "A" from tbl_crime where crime_year = :year`;
-  
+
     oracledb.getConnection(db_config, (err, conn) => {
       if (err) throw err;
-  
+      
+    
       conn.execute(sql, [year], (err, result) => {
         if (err) throw err;
   
@@ -120,9 +138,10 @@ router.get('/fourth', (req, res) => {
       `select cat5 "폭력" from tbl_crime where crime_year = :year and crime_region = :region`
     ];
   
-    oracledb.getConnection(db_config, (err, conn) => {
-      if (err) throw err;
-  
+      oracledb.getConnection(db_config, (err, conn) => {
+        if (err) throw err;
+    
+       
       // outFormat을 NUMBER로 설정하여 숫자 형식으로 조회 결과를 얻음
       conn.execute("ALTER SESSION SET NLS_NUMERIC_CHARACTERS = '.,'", [], (err) => {
         if (err) throw err;
@@ -221,29 +240,48 @@ router.post('/pages/Login/pages/Join', (req, res) => {
   });
 });
 
+
 router.post('/pages/login', (req, res) => {
   console.log('login Router!');
 
   let { mb_id, mb_pw } = req.body;
-  let or3 = "select * from tbl_member where MB_ID  = :mb_id and MB_PW = :mb_pw";
+  let sql = "select * from TBL_MEMBER where MB_ID = :mb_id";
 
   oracledb.getConnection(db_config, (err, conn) => {
-    if (err)  throw err;
+    if (err) throw err;
 
     console.log('연결됨');
-    
-    conn.execute(or3, { mb_id, mb_pw }, (err1, result) => {
+
+    conn.execute(sql, { mb_id }, (err1, result) => {
       if (err1) {
         console.error(err1);
         res.json({ result: 'failed' });
-        
+        return;
       }
+
+      if (result.rows.length === 0) {
+        // 입력된 아이디가 존재하지 않는 경우
+        console.log('User not found');
+        res.json({ result: 'failed' });
+        return;
+      }
+
+      const user = result.rows[0];
+
+      if (user.MB_PW !== mb_pw) {
+        // 비밀번호가 일치하지 않는 경우
+        console.log('Incorrect password');
+        res.json({ result: 'failed' });
+        return;
+      }
+
       console.log(result);
-      console.log(result.rows[0]);
       res.json({ result: 'success' });
     });
   });
 });
+
+
 
 
 

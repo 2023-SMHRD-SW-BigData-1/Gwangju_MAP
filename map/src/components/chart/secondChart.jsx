@@ -76,7 +76,7 @@ export default class Example extends PureComponent {
           <Legend />
           {/* <Bar dataKey="pv" stackId="a" fill="#8884d8" /> */}
           {/* <Bar dataKey="amt" stackId="a" fill="#82ca9d" /> */}
-          <Bar dataKey="uv" fill="#ffc658" name='가로등 설치 현황'/>
+          <Bar dataKey="uv" fill="#6495ed" name='가로등 설치 현황'/>
         </BarChart>
       </ResponsiveContainer>
     );

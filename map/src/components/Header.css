@@ -5,10 +5,17 @@
     align-items: center;
     font-size: 0.8rem;
     background-color: white;
+    border-bottom: 1px solid lightgray ;
 }
 .login{
     font-size: 0.9rem;
     
+}
+.tlt1{
+    position: relative;
+    display: inline;
+    font-size: 200%;
+    padding: 1em 0;
 }
 
 .tlt2{
