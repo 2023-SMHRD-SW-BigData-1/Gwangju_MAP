@@ -37,7 +37,7 @@ class BoardList extends Component {
         Axios.get("http://localhost:8888/list", {})
             .then((res) => {
                 const { data } = res;
-                console.log(data);
+                // console.log(data);
                 this.setState({
                     boardList: data,
                 });

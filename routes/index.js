@@ -258,16 +258,17 @@ router.post('/pages/login', (req, res) => {
         res.json({ result: 'failed' });
         return;
       }
-
+      
+      
       if (result.rows.length === 0) {
         // 입력된 아이디가 존재하지 않는 경우
         console.log('User not found');
         res.json({ result: 'failed' });
         return;
       }
-
+      
       const user = result.rows[0];
-
+      
       if (user.MB_PW !== mb_pw) {
         // 비밀번호가 일치하지 않는 경우
         console.log('Incorrect password');
@@ -275,8 +276,12 @@ router.post('/pages/login', (req, res) => {
         return;
       }
 
-      console.log(result);
-      res.json({ result: 'success' });
+
+      // localStorage.setItem("token",result.data.token)
+      // const TOKEN = localStorage.getItem("token");
+      // console.log(res);
+      res.json({ result: 'success' , id : mb_id});
+      console.log('Response:', { result: 'success' });
     });
   });
 });

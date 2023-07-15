@@ -73,7 +73,7 @@
     transition: 0.25s;
   }
   
-  div { color : blue; }
+  /* div { color : blue; } */
   
   .title{
     text-indent:50px

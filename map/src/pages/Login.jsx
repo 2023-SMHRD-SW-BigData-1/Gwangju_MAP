@@ -26,6 +26,8 @@ const onClickLogin = () => {
 
       if (result === 'success') {
         console.log('Login success!');
+        // alert(response.data.id)
+        // console.log(result);
         navigate('/'); // 리디렉션 수행
       } else if (result === 'failed') {
         console.log('Login failed');
@@ -41,7 +43,7 @@ const onClickLogin = () => {
   
 return (
      
-  <div class="page">
+  <div className="page">
      
      <div className="titleWrap" >
        <center>

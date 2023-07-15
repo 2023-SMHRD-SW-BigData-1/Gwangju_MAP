@@ -3,12 +3,16 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
+
 const Header = () => {
   
   
 
   return (
     <div>
+      
+      
       <div className="header">
         <div className="tlt1">
           <h1>광주안전지도</h1>
@@ -19,7 +23,8 @@ const Header = () => {
           </Link>
         </div>
       </div>
-     
+
+
     </div>
   );
 };
