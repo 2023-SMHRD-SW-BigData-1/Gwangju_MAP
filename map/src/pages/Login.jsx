@@ -22,15 +22,25 @@ const handleinputpw = (e) =>{
 const onClickLogin = () => {
   axios.post('http://localhost:8888/pages/login', { mb_id, mb_pw })
     .then(response => {
-      const { result } = response.data;
+      // console.log(response.config.data);
+      // localStorage.setItem("user_id",response.config.data.mb_id)
+      // const User_id = localStorage.getItem("user_id")
+      // response.session.destroy()
+      // console.log(response.body);
+      const { result, user_id, user_pw, user_nick } = response.data;
 
-      if (result === 'success') {
-        console.log('Login success!');
-        // alert(response.data.id)
-        // console.log(result);
-        navigate('/'); // 리디렉션 수행
+    if (result === 'success') {
+      console.log('Login success!');
+      console.log(user_id);
+      console.log(user_pw);
+      console.log(user_nick);
+      navigate('/');
       } else if (result === 'failed') {
         console.log('Login failed');
+      }else if (result ==='Incorrect password'){
+        alert(
+          console.log(' 비밀번호가 틀렸습니다.')
+        )
       }
     })
     .catch(error => {

@@ -20,8 +20,8 @@ function App() {
       <Route path='/pages/Login' element={<Login/>}></Route>
       <Route path='/pages/Login/pages/Join' element={<Join/>}></Route>
         {/* <Route path='/' element={<BoardList/>}></Route> */}
+    
       </Routes>
-    {/* <Kakaomap/> */}
 
     </div>
   );

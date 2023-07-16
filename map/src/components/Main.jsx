@@ -9,6 +9,7 @@ import FiveChart from './chart/fiveChart'
 import axios from 'axios'
 import BoardList from './board/BoardList'
 import Write from './board/Write'
+import Kakaomap from '../pages/kakaomap'
 
 
 
@@ -166,7 +167,9 @@ const Main = () => {
     <BoardList />
     <Write/>
       </div>
-      
+      <div>
+        <Kakaomap/>
+      </div>
       
 
 

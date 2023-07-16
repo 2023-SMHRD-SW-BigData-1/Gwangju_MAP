@@ -14,6 +14,7 @@ export default function Kakaomap() {
     // 지도를 표시할 div와 지도 옵션으로 지도를 생성
     var map = new kakao.maps.Map(mapContainer, mapOption);
   }, []);
+  
 
   return (
     <div id="map" style={{ width: '100%', height: 500 }}></div>
