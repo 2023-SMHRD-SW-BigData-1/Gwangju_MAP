@@ -5,6 +5,17 @@ const db_config = require('../config/dbconfig');
 const path = require('path');
 const bodyParser = require('body-parser');
 router.use(express.json());
+const session = require('express-session');
+const app = express();
+
+
+// express-session 미들웨어 설정
+// app.use(session({
+//   secret: 'secret-key',
+//   resave: false,
+//   saveUninitialized: true
+// }));
+
 
 
 router.get('/', (req, res) => {
@@ -267,21 +278,28 @@ router.post('/pages/login', (req, res) => {
         return;
       }
       
+      // console.log(result);
       const user = result.rows[0];
       
       if (user.MB_PW !== mb_pw) {
         // 비밀번호가 일치하지 않는 경우
         console.log('Incorrect password');
-        res.json({ result: 'failed' });
+        res.json({ result: 'Incorrect password' });
         return;
       }
-
-
-      // localStorage.setItem("token",result.data.token)
-      // const TOKEN = localStorage.getItem("token");
-      // console.log(res);
-      res.json({ result: 'success' , id : mb_id});
-      console.log('Response:', { result: 'success' });
+      
+      console.log(result.rows[0].MB_ID);
+      console.log(result.rows[0].MB_PW);
+      console.log(result.rows[0].MB_NICK);
+      
+      // req.session.userid = result.rows[0].MB_ID; 
+      
+      const responseData = {
+        result: 'success',
+        user_id: user.MB_ID,
+        user_pw: user.MB_PW,
+        user_nick: user.MB_NICK
+      };
     });
   });
 });
