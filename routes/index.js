@@ -413,7 +413,8 @@ router.post("/b_insert", (req, res) => {
     );
   });
 });
-router.post("/b_uodate", (req, res) => {
+
+router.post("/b_update", (req, res) => {
   var title = req.body.title;
   var region = req.body.region;
   var content = req.body.content;
