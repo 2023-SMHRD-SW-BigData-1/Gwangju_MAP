@@ -9,12 +9,28 @@ const session = require('express-session');
 const app = express();
 
 
-// express-session 미들웨어 설정
+// // express-session 미들웨어 설정
 // app.use(session({
-//   secret: 'secret-key',
-//   resave: false,
-//   saveUninitialized: true
+//   secret: 'secret-key', // 세션 암호화에 사용할 비밀키
+//   resave: false, // 변경사항이 없어도 세션을 항상 저장할지 여부
+//   saveUninitialized: true // 초기화되지 않은 세션을 저장할지 여부
 // }));
+
+// app.listen(8888, () => {
+//   console.log('Server is running on port 8888');
+// });
+// server.on('error', (error) => {
+//   if (error.code === 'EADDRINUSE') {
+//     console.log('Port 8888 is already in use. Waiting for the port to be available...');
+//     setTimeout(() => {
+//       server.close();
+//       server.listen(8888);
+//     }, 1000); // 1초 후에 다시 포트 8888로 서버 실행 시도
+//   } else {
+//     console.error(error);
+//   }
+// });
+
 
 
 
@@ -269,7 +285,8 @@ router.post('/pages/login', (req, res) => {
         res.json({ result: 'failed' });
         return;
       }
-      
+
+      let { mb_id, mb_pw, mb_nick } = req.body;
       
       if (result.rows.length === 0) {
         // 입력된 아이디가 존재하지 않는 경우
@@ -292,14 +309,22 @@ router.post('/pages/login', (req, res) => {
       console.log(result.rows[0].MB_PW);
       console.log(result.rows[0].MB_NICK);
       
-      // req.session.userid = result.rows[0].MB_ID; 
-      
-      const responseData = {
-        result: 'success',
-        user_id: user.MB_ID,
-        user_pw: user.MB_PW,
-        user_nick: user.MB_NICK
+      const userData = {
+        mb_id: result.rows[0].MB_ID,
+        mb_pw: result.rows[0].MB_PW,
+        mb_nick: result.rows[0].MB_NICK
       };
+
+      // req.session.user = {
+      //   mb_id: result.rows[0].MB_ID,
+      //   mb_pw: result.rows[0].MB_PW,
+      //   mb_nick: result.rows[0].MB_NICK
+      // };
+    
+      
+      res.json({ result: 'success', user: userData });
+    
+    
     });
   });
 });

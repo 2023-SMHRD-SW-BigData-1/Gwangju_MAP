@@ -1,29 +1,33 @@
-.header{
+.header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     font-size: 0.8rem;
     background-color: white;
-    border-bottom: 1px solid lightgray ;
-}
-.login{
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .login {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
     font-size: 0.9rem;
-    
-}
-.tlt1{
+    margin-left: auto; /* 새로 추가한 스타일 속성 */
+  }
+  
+  .tlt1 {
     position: relative;
     display: inline;
     font-size: 200%;
     padding: 1em 0;
-}
-
-.tlt2{
+  }
+  
+  .tlt2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     font-size: 0.5rem;
     background-color: white;
-}
-
-
+  }

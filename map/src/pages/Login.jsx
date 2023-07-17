@@ -4,6 +4,7 @@ import axios from 'axios'
 import { navigator,useNavigate } from 'react-router-dom';
 const Login = () => {
   const navigate = useNavigate();
+  
 
   // const result = axios.post('http://localhost:8888/user/login',{mb_id: 'mb_id',mb_pw: 'mb_pw'})/
  
@@ -27,13 +28,17 @@ const onClickLogin = () => {
       // const User_id = localStorage.getItem("user_id")
       // response.session.destroy()
       // console.log(response.body);
-      const { result, user_id, user_pw, user_nick } = response.data;
+      const { result, user } = response.data;
 
     if (result === 'success') {
       console.log('Login success!');
-      console.log(user_id);
-      console.log(user_pw);
-      console.log(user_nick);
+      console.log(response);
+      console.log(user);
+      alert(
+      user.mb_nick + ' 님 반갑습니다.'
+      )
+     sessionStorage.setItem('nick',user.mb_nick);
+     sessionStorage.getItem('nick')
       navigate('/');
       } else if (result === 'failed') {
         console.log('Login failed');
