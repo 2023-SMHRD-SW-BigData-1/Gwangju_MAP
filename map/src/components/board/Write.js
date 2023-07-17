@@ -30,19 +30,6 @@ class Write extends Component {
             });
     };
 
-    update = () => {
-        Axios.post("http://localhost:8888/b_update", {
-            title: this.state.title,
-            region: this.state.region,
-            content: this.state.content,
-        })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((e) => {
-                console.error(e);
-            });
-    };
 
     handleChange = (e) => {
         this.setState({
