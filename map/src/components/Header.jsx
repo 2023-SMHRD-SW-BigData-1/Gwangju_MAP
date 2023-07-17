@@ -6,6 +6,8 @@ const Header = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem('nick');
+    sessionStorage.removeItem('id');
+
     setIsLoggedIn(false);
   };
 

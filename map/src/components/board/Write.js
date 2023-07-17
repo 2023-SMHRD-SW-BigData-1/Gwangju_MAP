@@ -18,10 +18,26 @@ class Write extends Component {
             title: this.state.title,
             region: this.state.region,
             content: this.state.content,
+            mb_id: sessionStorage.getItem("id")
+            
         })
         .then((res) => {
             console.log(res);
             
+            })
+            .catch((e) => {
+                console.error(e);
+            });
+    };
+
+    update = () => {
+        Axios.post("http://localhost:8888/b_update", {
+            title: this.state.title,
+            region: this.state.region,
+            content: this.state.content,
+        })
+            .then((res) => {
+                console.log(res);
             })
             .catch((e) => {
                 console.error(e);

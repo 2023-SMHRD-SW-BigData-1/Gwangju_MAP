@@ -38,6 +38,7 @@ const onClickLogin = () => {
       user.mb_nick + ' 님 반갑습니다.'
       )
      sessionStorage.setItem('nick',user.mb_nick);
+     sessionStorage.setItem('id',user.mb_id);
      sessionStorage.getItem('nick')
       navigate('/');
       } else if (result === 'failed') {
