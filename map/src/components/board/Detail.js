@@ -18,6 +18,7 @@ const Detail = ({id,
         <p>작성자: {registerId}</p>
         <p>작성일: {registerDate}</p>
         <p>내용: {content}</p>
+        btn
     </div>
 
   );
