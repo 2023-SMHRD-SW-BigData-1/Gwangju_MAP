@@ -446,6 +446,39 @@ router.post("/b_uodate", (req, res) => {
     );
   });
 });
+router.post("/b_update/select", (req, res) => {
+  var title = req.body.title;
+  var region = req.body.region;
+  var content = req.body.content;
+  var mb_id = req.body.mb_id;
+
+  const sqlQuery =
+    "INSERT INTO tbl_board (b_seq, b_title, b_content, mb_id, b_region) values (num_board.nextval, :title, :content, :mb_id, :region)";
+
+  oracledb.getConnection(db_config, (err, conn) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to connect to the database.");
+    }
+    conn.execute(
+      sqlQuery,
+      { title: title, content: content, mb_id: mb_id, region: region },
+      { autoCommit: true },
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send("Failed to execute the query.");
+        }
+        res.send(result);
+        conn.close((err) => {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    );
+  });
+});
 
 
 module.exports = router;

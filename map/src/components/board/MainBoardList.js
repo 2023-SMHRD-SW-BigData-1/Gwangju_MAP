@@ -183,7 +183,7 @@ class BoardList extends Component {
 
         )} {/* Detail 컴포넌트를 렌더링하며, content 데이터를 전달합니다. */}
         {/* {sessionStorage.getItem("nick" ? )} */}
-        <Button variant="info" >글쓰기</Button>
+        {/* <Button variant="info" >글쓰기</Button> */}
 
       </div>
 
