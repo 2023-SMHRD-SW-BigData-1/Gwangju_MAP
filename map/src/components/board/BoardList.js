@@ -97,24 +97,22 @@ class BoardList extends Component {
         </Table>
 
         {selectedDetail && (
-
-          <Detail
-
-            id={selectedDetail.id}
-
-            region={selectedDetail.region}
-
-            title={selectedDetail.title}
-
-            registerId={selectedDetail.registerId}
-
-            registerDate={selectedDetail.registerDate}
-
-            view={selectedDetail.view}
-
-            content={selectedDetail.content} // 'content' 추가
-
-          />
+          <Link
+            to={{
+              pathname: `/list/detail/${selectedDetail.id}`,
+              state: {
+                region: selectedDetail.region,
+                title: selectedDetail.title,
+                registerId: selectedDetail.registerId,
+                registerDate: selectedDetail.registerDate,
+                view: selectedDetail.view,
+                content: selectedDetail.content,
+              },
+            }}
+          >
+            <Button variant="info">게시글 확인하기</Button>
+          </Link>
+        )}
 
         <Link to="/list/write">
           <Button variant="info">글쓰기</Button>
