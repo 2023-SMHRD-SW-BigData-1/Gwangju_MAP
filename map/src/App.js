@@ -19,10 +19,11 @@ function App() {
       <Route path='/' element={<Main/>}></Route>
       <Route path='/pages/Login' element={<Login/>}></Route>
       <Route path='/pages/Login/pages/Join' element={<Join/>}></Route>
-        {/* <Route path='/' element={<BoardList/>}></Route> */}
+        <Route path='/list' element={<BoardList/>}></Route>
+        <Route path='/list/write' element={<Write/>}></Route>
     
       </Routes>
-
+    
     </div>
   );
 }

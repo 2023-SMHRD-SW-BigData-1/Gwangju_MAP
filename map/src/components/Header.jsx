@@ -26,7 +26,11 @@ const Header = () => {
                 로그인
               </button>
             </Link>
-          )}
+          )}<Link to="/list">
+          <button type="button" className="btn btn-primary btn-lg">
+            안전게시판
+          </button>
+        </Link>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import axios from 'axios'
 import MainBoardList from './board/MainBoardList'
 import Write from './board/Write'
 import Kakaomap from '../pages/kakaomap'
+import { Routes } from 'react-router-dom'
 
 
 
@@ -164,9 +165,11 @@ const Main = () => {
     </div>  
 
     <div className='Board'>
+      
     <MainBoardList />
+     
     
-    <Write/>
+    {/* <Write/> */}
       </div>
       <div>
         <Kakaomap/>
