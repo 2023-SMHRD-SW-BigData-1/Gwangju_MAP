@@ -20,8 +20,9 @@ class Write extends Component {
             region: this.state.region,
             content: this.state.content,
         })
-            .then((res) => {
-                console.log(res);
+        .then((res) => {
+            console.log(res);
+            
             })
             .catch((e) => {
                 console.error(e);

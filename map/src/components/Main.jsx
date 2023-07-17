@@ -7,7 +7,7 @@ import ThirdChart from './chart/thirdChart'
 import FourthChart from './chart/fourthChart'
 import FiveChart from './chart/fiveChart'
 import axios from 'axios'
-import BoardList from './board/BoardList'
+import MainBoardList from './board/MainBoardList'
 import Write from './board/Write'
 import Kakaomap from '../pages/kakaomap'
 
@@ -164,7 +164,8 @@ const Main = () => {
     </div>  
 
     <div className='Board'>
-    <BoardList />
+    <MainBoardList />
+    
     <Write/>
       </div>
       <div>

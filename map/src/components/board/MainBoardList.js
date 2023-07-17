@@ -52,7 +52,7 @@ class BoardList extends Component {
 
   getList = () => {
 
-    Axios.get("http://localhost:8888/list", {})
+    Axios.get("http://localhost:8888/mainlist", {})
 
       .then((res) => {
 

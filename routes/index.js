@@ -357,6 +357,29 @@ router.get('/list', (req, res) => {
   });
 });
 
+router.get('/mainlist', (req, res) => {
+  let sqlQuery = 'select * from( select * from tbl_board order by b_at desc ) where rownum<=5';
+
+  oracledb.getConnection(db_config, (err, conn) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to connect to the database.");
+    }
+    conn.execute(sqlQuery, [], (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send("Failed to execute the query.");
+      }
+      res.send(result.rows);
+      conn.close((err) => {
+        if (err) {
+          console.error(err);
+        }
+      });
+    });
+  });
+});
+
 router.post("/b_insert", (req, res) => {
   var title = req.body.title;
   var region = req.body.region;
