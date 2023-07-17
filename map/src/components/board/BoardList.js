@@ -177,7 +177,7 @@ class BoardList extends Component {
         </Table>
 
         {selectedDetail && (
-
+          
           <Detail
 
             id={selectedDetail.id}
