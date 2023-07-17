@@ -8,28 +8,10 @@ router.use(express.json());
 const session = require('express-session');
 const app = express();
 
+const cors = require('cors');
 
-// // express-session 미들웨어 설정
-// app.use(session({
-//   secret: 'secret-key', // 세션 암호화에 사용할 비밀키
-//   resave: false, // 변경사항이 없어도 세션을 항상 저장할지 여부
-//   saveUninitialized: true // 초기화되지 않은 세션을 저장할지 여부
-// }));
-
-// app.listen(8888, () => {
-//   console.log('Server is running on port 8888');
-// });
-// server.on('error', (error) => {
-//   if (error.code === 'EADDRINUSE') {
-//     console.log('Port 8888 is already in use. Waiting for the port to be available...');
-//     setTimeout(() => {
-//       server.close();
-//       server.listen(8888);
-//     }, 1000); // 1초 후에 다시 포트 8888로 서버 실행 시도
-//   } else {
-//     console.error(error);
-//   }
-// });
+// CORS 허용 설정
+app.use(cors());
 
 
 
@@ -447,39 +429,34 @@ router.post("/b_update", (req, res) => {
     );
   });
 });
-router.post("/b_update/select", (req, res) => {
-  var title = req.body.title;
-  var region = req.body.region;
-  var content = req.body.content;
-  var mb_id = req.body.mb_id;
 
-  const sqlQuery =
-    "INSERT INTO tbl_board (b_seq, b_title, b_content, mb_id, b_region) values (num_board.nextval, :title, :content, :mb_id, :region)";
+// router.post('/list/detail', (req, res) => {
+//   const id = req.body.id;
 
-  oracledb.getConnection(db_config, (err, conn) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Failed to connect to the database.");
-    }
-    conn.execute(
-      sqlQuery,
-      { title: title, content: content, mb_id: mb_id, region: region },
-      { autoCommit: true },
-      (err, result) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).send("Failed to execute the query.");
-        }
-        res.send(result);
-        conn.close((err) => {
-          if (err) {
-            console.error(err);
-          }
-        });
-      }
-    );
-  });
-});
+//   const sqlQuery = `SELECT b_seq, b_title, b_content, mb_id, b_region FROM tbl_board WHERE b_seq = :id`;
+
+//   oracledb.getConnection(db_config, (err, conn) => {
+//     if (err) {
+//       console.error(err);
+//       return res.status(500).send('Failed to connect to the database.');
+//     }
+    
+//     conn.execute(sqlQuery, [id], { outFormat: oracledb.OUT_FORMAT_OBJECT }, (err, result) => {
+//       if (err) {
+//         console.error(err);
+//         return res.status(500).send('Failed to execute the query.');
+//       }
+//       // console.log("조회성공");
+//       console.log(result.rows);
+//       res.send(result.rows[0] ); // 수정: 객체 형태로 응답 데이터를 전달
+//       conn.close((err) => {
+//         if (err) {
+//           console.error(err);
+//         }
+//       });
+//     });
+//   });
+// });
 
 
 module.exports = router;

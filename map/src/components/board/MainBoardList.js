@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Axios from "axios";
 import Detail from "./Detail";
+import { Link } from "react-router-dom";
 
 
 const Board = ({
@@ -184,6 +185,11 @@ class BoardList extends Component {
         )} {/* Detail 컴포넌트를 렌더링하며, content 데이터를 전달합니다. */}
         {/* {sessionStorage.getItem("nick" ? )} */}
         {/* <Button variant="info" >글쓰기</Button> */}
+        <Link to="/list">
+          <button type="button" className="btn btn-primary btn-lg">
+            안전게시판
+          </button>
+          </Link>
 
       </div>
 
