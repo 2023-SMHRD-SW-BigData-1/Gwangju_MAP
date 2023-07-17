@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Join from './pages/Join';
 import BoardList from './components/board/BoardList';
 import Write from './components/board/Write';
+import Update from './components/board/Update';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Kakaomap from '../src/pages/kakaomap'
 import { useEffect } from 'react';
@@ -21,6 +22,8 @@ function App() {
       <Route path='/pages/Login/pages/Join' element={<Join/>}></Route>
         <Route path='/list' element={<BoardList/>}></Route>
         <Route path='/list/write' element={<Write/>}></Route>
+        <Route path='/list/update' element={<Update/>}></Route>
+        
     
       </Routes>
     

@@ -74,6 +74,21 @@ class BoardList extends Component {
 
   };
 
+  update = () => {
+    Axios.post("http://localhost:8888/b_update", {
+        title: this.state.title,
+        region: this.state.region,
+        content: this.state.content,
+        mb_id: sessionStorage.getItem("id")
+    })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((e) => {
+            console.error(e);
+        });
+};
+
 
   componentDidMount() {
 
@@ -185,6 +200,9 @@ class BoardList extends Component {
         {/* {sessionStorage.getItem("nick" ? )} */}
         <Link to="/list/write">
         <Button variant="info" >글쓰기</Button>
+        </Link>
+        <Link to="/list/update">
+        <Button variant="info" >수정하기</Button>
         </Link>
 
       </div>
