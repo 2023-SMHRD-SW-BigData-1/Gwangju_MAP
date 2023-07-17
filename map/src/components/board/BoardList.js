@@ -53,15 +53,30 @@ class BoardList extends Component {
     this.getList();
   }
 
-  handleDetailClick = (detailData) => {
-    const { id } = detailData; // id 프로퍼티 추가
-    this.setState({
-      selectedDetail: {
-        id,
-        ...detailData,
-      },
-    });
-  };
+
+
+// 게시글 확인 버튼 클릭 시
+handleDetailClick = (detailData) => {
+
+  const { id } = detailData;
+  this.setState({
+    selectedDetail: {
+      id,
+      ...detailData,
+    },
+  });
+};
+
+
+
+handleViewDetail = () => {
+  const { selectedDetail } = this.state;
+  if (selectedDetail) {
+    const { id, region, title, registerId, registerDate, view, content } = selectedDetail;
+    // 이곳에서 ID를 사용하여 필요한 작업을 수행하면 됩니다.
+    console.log("Selected ID:", id);
+  }
+};
 
   render() {
     const { boardList, selectedDetail } = this.state;
@@ -96,7 +111,10 @@ class BoardList extends Component {
           </tbody>
         </Table>
 
-        {selectedDetail && (
+        
+        {
+        
+        selectedDetail && (
           <Link
             to={{
               pathname: `/list/detail/${selectedDetail.id}`,

@@ -11,17 +11,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Kakaomap from '../src/pages/kakaomap'
 import { useEffect } from 'react';
 import { useParams } from "react-router-dom";
+import Header from './components/Header';
 
 function App() {
+
+  const getData = (obj)=>{
+    console.log('getData Function in App.js', obj)
+  }
   return (
     <div className="warp">
+      <Header/>
       {/* <BoardList></BoardList> */}
       {/* <Write></Write> */}
       <Routes>
       <Route path='/' element={<Main/>}></Route>
       <Route path='/pages/Login' element={<Login/>}></Route>
       <Route path='/pages/Login/pages/Join' element={<Join/>}></Route>
-        <Route path='/list' element={<BoardList/>}></Route>
+        <Route path='/list' element={<BoardList getData={getData}/>}></Route>
         <Route path='/list/write' element={<Write/>}></Route>
         {/* <Route path='/list/update' element={<Update/>}></Route> */}
         <Route path='/list/detail/:id' element={<Detail/>}></Route>

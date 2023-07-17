@@ -1,7 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import './Header.css'
+
 
 const Header = () => {
+
+  const nav = useNavigate()
+
   const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem('nick') !== null);
 
   const handleLogout = () => {
@@ -15,7 +20,10 @@ const Header = () => {
     <div>
       <div className="header">
         <div className="tlt1">
-          <h1>광주안전지도</h1>
+          <h1 className="header-title" onClick={()=>{nav('/')}}>
+          <img src="http://localhost:3000/img/logo.png" width='50px'></img>
+            광주안전지도
+            </h1>
         </div>
         <div className="login">
           {isLoggedIn ? (

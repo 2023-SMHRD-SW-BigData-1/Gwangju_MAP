@@ -113,7 +113,6 @@ const Main = () => {
 
   return (
     <div className='main' style={{backgroundColor : '#ffffff'}}>
-        <Header/>
 
         {/* 연도, 구 선택 */}
   <div className="dropdown d-flex">
