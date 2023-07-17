@@ -15,12 +15,14 @@ const Detail = () => {
 
   return (
     <div>
-      <p>지역: {region}</p>
-      <p>제목: {title}</p>
-      <p>작성자: {registerId}</p>
-      <p>작성일: {registerDate}</p>
-      <p>조회수: {view}</p>
-      <p>내용: {content}</p>
+        <p>아이디: {id}</p>
+        <p>지역: {region}</p>
+        <p>제목: {title}</p>
+        <p>조회수: {view}</p>
+        <p>작성자: {registerId}</p>
+        <p>작성일: {registerDate}</p>
+        <p>내용: {content}</p>
+        btn
     </div>
   );
 };
