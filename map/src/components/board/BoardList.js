@@ -60,6 +60,9 @@ class BoardList extends Component {
         id,
         ...detailData,
       },
+    }, () => {
+      // 상태 업데이트가 완료된 후에 실행되는 콜백 함수
+      console.log(this.state.selectedDetail);
     });
   };
 
@@ -97,22 +100,24 @@ class BoardList extends Component {
         </Table>
 
         {selectedDetail && (
-          <Link
-            to={{
-              pathname: `/list/detail/${selectedDetail.id}`,
-              state: {
-                region: selectedDetail.region,
-                title: selectedDetail.title,
-                registerId: selectedDetail.registerId,
-                registerDate: selectedDetail.registerDate,
-                view: selectedDetail.view,
-                content: selectedDetail.content,
-              },
-            }}
-          >
-            <Button variant="info">게시글 확인하기</Button>
-          </Link>
-        )}
+          
+  <Link
+    to={{
+      pathname: `/list/detail/${selectedDetail.id}`,
+      state: {
+        id: selectedDetail.id,
+        region: selectedDetail.region,
+        title: selectedDetail.title,
+        registerId: selectedDetail.registerId,
+        registerDate: selectedDetail.registerDate,
+        view: selectedDetail.view,
+        content: selectedDetail.content,
+      },
+    }}
+  >
+    <Button variant="info">게시글 확인하기</Button>
+  </Link>
+)}
 
         <Link to="/list/write">
           <Button variant="info">글쓰기</Button>
