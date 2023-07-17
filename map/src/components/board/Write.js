@@ -8,7 +8,6 @@ import Axios from "axios";
  */
 class Write extends Component {
     state = {
-        isModifyMode: true,
         title: "",
         region: "",
         content: "",
@@ -23,20 +22,6 @@ class Write extends Component {
         .then((res) => {
             console.log(res);
             
-            })
-            .catch((e) => {
-                console.error(e);
-            });
-    };
-
-    update = () => {
-        Axios.post("http://localhost:8888/b_update", {
-            title: this.state.title,
-            region: this.state.region,
-            content: this.state.content,
-        })
-            .then((res) => {
-                console.log(res);
             })
             .catch((e) => {
                 console.error(e);
@@ -67,7 +52,7 @@ class Write extends Component {
                     <Form.Label>내용</Form.Label>
                     <Form.Control as="textarea" name="content" onChange={this.handleChange} placeholder="내용을 입력하세요" />
                 </Form.Group>
-                <Button variant="info" onClick={this.state.isModifyMode ? this.write : this.update}>작성완료</Button>
+                <Button variant="info" onClick={this.write}>작성완료</Button>
                 <Button variant="secondary">취소</Button>
             </div>
         );
