@@ -15,7 +15,6 @@ class Write extends Component {
 
     write = () => {
         Axios.post("http://localhost:8888/b_insert", {
-            id:
             title: this.state.title,
             region: this.state.region,
             content: this.state.content,
