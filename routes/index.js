@@ -364,18 +364,6 @@ router.post("/b_insert", (req, res) => {
   });
 });
 
-// app.post("/b_update", (req, res) => {
-//   var title = req.body.title;
-//   var region = req.body.region;
-//   var content = req.body.content;
-
-//   const sqlQuery =
-//     "UPDATE BOARD SET BOARD_TITLE = ?, BOARD_CONTENT = ?, UPDATER_ID) FROM (?,?,artistJay);";
-//   db.query(sqlQuery, [title, region, content], (err, result) => {
-//     res.send(result);
-//   });
-// });
-
 
 
 module.exports = router;
