@@ -415,13 +415,13 @@ router.post("/b_insert", (req, res) => {
 });
 
 router.post("/b_update", (req, res) => {
+ //번호넣기
   var title = req.body.title;
   var region = req.body.region;
   var content = req.body.content;
-  var mb_id = req.body.mb_id;
 
   const sqlQuery =
-    "INSERT INTO tbl_board (b_seq, b_title, b_content, mb_id, b_region) values (num_board.nextval, :title, :content, :mb_id, :region)";
+    "update tbl_board set b_title=///'a',b_content=///'aa',b_region=///'aaa',b_at=sysdate where ////b_seq=8";
 
   oracledb.getConnection(db_config, (err, conn) => {
     if (err) {
