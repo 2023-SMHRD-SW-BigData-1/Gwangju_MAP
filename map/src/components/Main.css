@@ -66,10 +66,12 @@
     }
     .ft{
       display: inline;
+      overflow: auto;
       
     } 
-    .ftl{
+   .inputForm{
       display: flex;
+<<<<<<< HEAD
     }
     .ktk{
       display: flex;
@@ -77,3 +79,14 @@
     .Board{
       margin:20px;
     }
+=======
+    margin: 15px;
+    width: 400px;
+    padding: 6px;
+    border-radius: 15px;
+    border: 1px solid #e2e2e2;
+   }
+   .kbtn{
+      
+   }
+>>>>>>> 8ca2365df8959afda4dc97ef744193f0f86534d2
