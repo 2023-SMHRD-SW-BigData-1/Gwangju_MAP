@@ -186,7 +186,7 @@ const Main = () => {
         <div className='FCM2' style={{ width : 500, height : 450}}> <SecondChart  cdata2 = {ch2}/>  </div>
         <div className='FCM3' style={{ width : 500, height : 450}}> <FiveChart cdata5={ch5}/> </div>
     </div>  
-
+    <div><br/></div>
     <div className="Board">
         <MainBoardList />
         {/* <Write/> */}
