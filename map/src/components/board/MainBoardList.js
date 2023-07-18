@@ -20,15 +20,15 @@ const Board = ({
 
     <tr>
 
-      <td>{id}</td>
+      <td className="text-center">{id}</td>
 
-      <td>{region}</td>
+      <td className="left">{region}</td>
 
-      <td onClick={() => onDetailClick({ id, region, title, registerId, registerDate, view, content })}>{title}</td>
+      <td className="left" onClick={() => onDetailClick({ id, region, title, registerId, registerDate, view, content })}>{title}</td>
 
-      <td>{registerId}</td>
+      <td className="text-center">{registerId}</td>
 
-      <td>{registerDate.match(/^\d{4}-\d{2}-\d{2}/)[0]}</td>
+      <td className="text-center">{registerDate.match(/^\d{4}-\d{2}-\d{2}/)[0]}</td>
       
 
     </tr>
@@ -99,23 +99,23 @@ class BoardList extends Component {
 
     return (
 
-      <div className="boardCon">
-        <div>
+      <div>
+        <div className="boardCon">
           <Table striped bordered hover>
 
             <thead>
 
               <tr>
 
-                <th>번호</th>
+                <th className="num text-center">번호</th>
 
-                <th>지역</th>
+                <th className="reg text-center">지역</th>
 
-                <th>제목</th>
+                <th className="text-center">제목</th>
 
-                <th>작성자</th>
+                <th className="person text-center">작성자</th>
 
-                <th>작성일</th>
+                <th className="date text-center">작성일</th>
 
               </tr>
 
@@ -149,16 +149,16 @@ class BoardList extends Component {
                 );
 
               })}
-              <tr>
-              <td colSpan="4"></td> {/* 버튼 셀을 표시하지 않기 위해 빈 셀 추가 */}
-              <td>
+              <tr className="b_r_btn">
+                <td colSpan="4"></td> {/* 버튼 셀을 표시하지 않기 위해 빈 셀 추가 */}
+                <td>
                 <Link to="/list">
                   <button type="button" className="btn btn-primary btn-lg">
                     더 많은 게시글보기 &gt;&gt;
                   </button>
                 </Link>
-              </td>
-            </tr>
+                </td>
+              </tr>
             </tbody>
 
           </Table>
@@ -186,9 +186,6 @@ class BoardList extends Component {
 
         )
         }
-        <div className="b_button">
-          
-        </div>
       </div>
 
     );

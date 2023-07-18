@@ -1,0 +1,20 @@
+.date{
+    width: 15%;
+}
+.num{
+    width:5%;
+}
+.reg{
+    width: 15%;
+}
+.person{
+    width: 10%;
+}
+.boardCon{
+justify-content : center;
+align-items: center;
+}
+.left{
+    padding-left: 2000px;
+}
+
