@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 const { kakao } = window;
 
+
 export default function Kakaomap({ searchPlace }) {
   const [Places, setPlaces] = useState([]); // 초기 값을 빈 배열로 설정
 
@@ -86,34 +87,40 @@ export default function Kakaomap({ searchPlace }) {
   }, [searchPlace]);
 
   return (
-    <div>
-      <div
-        id="myMap"
-        style={{
-          width: "100%",
-          height: "500px",
-        }}
-      ></div>
-      <div id="result-list">
-        {Places.map((item, i) => (
-          <div key={i} style={{ marginTop: "20px" }}>
-            <span>{i + 1}</span>
+<div>
+  <div
+    id="myMap"
+    style={{
+      width: "100%",
+      height: "500px",
+    }}
+  ></div>
+  <div
+    id="result-list"
+    style={{
+      overflow: "scroll",
+      maxHeight: "300px", // 최대 높이를 지정하여 스크롤이 필요한 경우 나타나도록 함
+    }}
+  >
+    {Places.map((item, i) => (
+      <div key={i} style={{ marginBottom: "20px" }}>
+        <span>{i + 1}</span>
+        <div>
+          <h5>{item.place_name}</h5>
+          {item.road_address_name ? (
             <div>
-              <h5>{item.place_name}</h5>
-              {item.road_address_name ? (
-                <div>
-                  <span>{item.road_address_name}</span>
-                  <span>{item.address_name}</span>
-                </div>
-              ) : (
-                <span>{item.address_name}</span>
-              )}
-              <span>{item.phone}</span>
+              <span>{item.road_address_name}</span>
+              <span>{item.address_name}</span>
             </div>
-          </div>
-        ))}
-        <div id="pagination"></div>
+          ) : (
+            <span>{item.address_name}</span>
+          )}
+          <span>{item.phone}</span>
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+  <div id="pagination"></div>
+</div>
   );
 }

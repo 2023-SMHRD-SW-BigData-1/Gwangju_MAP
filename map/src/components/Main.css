@@ -66,11 +66,17 @@
     }
     .ft{
       display: inline;
+      overflow: auto;
       
     } 
-    .ftl{
+   .inputForm{
       display: flex;
-    }
-    .ktk{
-      display: flex;
-    }
+    margin: 15px;
+    width: 400px;
+    padding: 6px;
+    border-radius: 15px;
+    border: 1px solid #e2e2e2;
+   }
+   .kbtn{
+      
+   }

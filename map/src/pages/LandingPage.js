@@ -29,7 +29,7 @@ function LandingPage() {
 
 
 <form className="inputForm" onSubmit={handleSubmit}>
-  <input placeholder="광주 파출서" onChange={onChange} value={InputText} />
+  <input placeholder="광주 파출소" onChange={onChange} value={InputText} />
   <button className='kbtn' type="submit">검색</button>
 </form>
 <Kakaomap searchPlace={Place} />
