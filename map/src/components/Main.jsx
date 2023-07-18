@@ -11,6 +11,7 @@ import MainBoardList from './board/MainBoardList'
 import Write from './board/Write'
 import Kakaomap from '../pages/kakaomap'
 import { Routes } from 'react-router-dom'
+import LandingPage from '../pages/LandingPage'
 
 
 
@@ -79,6 +80,16 @@ const Main = () => {
       .catch(() => {});
   }, [selectedYear, selectedRegion]);
 
+  // useEffect(() => {
+  //   if (ch4.length > 0) {
+  //     console.log(ch4[0].name, ch4[0].value);
+  //     console.log(ch4[1].name, ch4[1].value);
+  //     console.log(ch4[2].name, ch4[2].value);
+  //     console.log(ch4[3].name, ch4[3].value);
+  //     console.log(ch4[4].name, ch4[4].value);
+  //   }
+  // }, [ch4]);
+
   // 5번 차트
   useEffect(() => {
     axios.get('http://localhost:8888/five')
@@ -112,7 +123,7 @@ const Main = () => {
 
 
   return (
-    <div className='main' style={{backgroundColor : '#ffffff'}}>
+    <div className='main' style={{backgroundColor : '#e5e5e5'}}>
 
         {/* 연도, 구 선택 */}
   <div className="dropdown d-flex">
@@ -144,7 +155,7 @@ const Main = () => {
         
         <div className = "FCT" >
 
-          <div className='FCT1' style={{ width : 1100, height : 650}}>
+          <div className='FCT1' style={{ width : 900, height : 500}}>
 
             <div className='FCT1T'>
           {/* <h4>cctv 설치 수</h4>
@@ -153,14 +164,27 @@ const Main = () => {
 
             <FirstChart cdata={ch1}   /></div>
 
-            <div className='FCT2' style={{width : 700, height : 650}} > <ThirdChart cdata3={ch3} /> </div>
+            <div className='FCT2' style={{width : 700, height : 500}} > <ThirdChart cdata3={ch3} />
+            <div className='FCT2N'><h4>범죄율</h4> 
+             {ch3.length > 0 && ch3.slice(0, 5).map((item) => (
+            <div key={item.subject}>{item.subject}: {item.A}</div>
+            ))}</div>
+             </div>
 
         </div>
 
         <div className='FCM' > 
-        <div className='FCM1' style={{width : 800, height : 500}}> <FourthChart cdata4={ch4} /> </div> 
-        <div className='FCM2' style={{ width : 700, height : 600}}> <SecondChart  cdata2 = {ch2}/>  </div>
-        <div className='FCM3' style={{ width : 500, height : 500}}> <FiveChart cdata5={ch5}/> </div>
+        <div className='FCM1' style={{width : 800, height : 450}}> <FourthChart cdata4={ch4} /> 
+        <div><h4>5대범죄 검거현황</h4>
+            {ch4.length > 0 && ch4.slice(0, 5).map((item) => (
+              <div key={item.name}>{item.name}: {item.value}</div>
+            ))}
+        
+        </div>
+
+        </div> 
+        <div className='FCM2' style={{ width : 500, height : 450}}> <SecondChart  cdata2 = {ch2}/>  </div>
+        <div className='FCM3' style={{ width : 500, height : 450}}> <FiveChart cdata5={ch5}/> </div>
     </div>  
 
     <div className='Board'>
@@ -171,6 +195,7 @@ const Main = () => {
     {/* <Write/> */}
       </div>
       <div>
+        <LandingPage/><hr></hr>
         <Kakaomap/>
       </div>
       

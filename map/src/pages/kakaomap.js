@@ -1,59 +1,119 @@
-import React, { useEffect } from "react";
+/*global Kakao */
+import React, { useEffect, useState } from "react";
 const { kakao } = window;
 
-export default function Kakaomap() {
+export default function Kakaomap({ searchPlace }) {
+  const [Places, setPlaces] = useState([]); // 초기 값을 빈 배열로 설정
+
   useEffect(() => {
-    var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
-    var mapOption = { 
-      center: new kakao.maps.LatLng(35.149893, 126.919810), // 지도의 중심좌표
-      level: 3 // 지도의 확대 레벨
+    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+    var markers = [];
+    let container = document.getElementById("myMap"); // 변수 선언을 let으로 변경
+
+    if (!container) {
+      // 컨테이너가 존재하지 않으면 종료
+      return;
+    }
+
+    const options = {
+      center: new kakao.maps.LatLng(35.149939, 126.919812),
+      level: 3,
     };
+    const map = new kakao.maps.Map(container, options);
 
-    // 지도를 생성합니다
-    var map = new kakao.maps.Map(mapContainer, mapOption);
+    const ps = new kakao.maps.services.Places();
 
-    // 마커들의 위치와 내용을 가지고 있는 객체 배열입니다
-    var markers = [
-      {
-        position: new kakao.maps.LatLng(35.149893, 126.919810),
-        content: '마커 1'
-      },
-      {
-        position: new kakao.maps.LatLng(35.145745, 126.921223),
-        content: '마커 2'
-      },
-      // 추가적인 마커들...
-    ];
+    ps.keywordSearch(searchPlace, placesSearchCB);
 
-    // 마커들을 담을 배열입니다
-    var markerList = [];
+    function placesSearchCB(data, status, pagination) {
+      if (status === kakao.maps.services.Status.OK) {
+        let bounds = new kakao.maps.LatLngBounds();
 
-    // 마커들을 생성하고 지도에 추가합니다
-    for (var i = 0; i < markers.length; i++) {
-      var marker = new kakao.maps.Marker({
-        position: markers[i].position
-      });
+        for (let i = 0; i < data.length; i++) {
+          displayMarker(data[i]);
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }
 
-      marker.setMap(map);
-
-      // 마커에 인포윈도우를 생성하여 내용을 표시합니다
-      var infowindow = new kakao.maps.InfoWindow({
-        content: markers[i].content
-      });
-      kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
-
-      markerList.push(marker);
+        map.setBounds(bounds);
+        displayPagination(pagination);
+        setPlaces(data);
+      }
     }
 
-    // 마커 클릭 시 인포윈도우를 열기 위한 클로저를 생성하는 함수입니다
-    function makeClickListener(map, marker, infowindow) {
-      return function() {
+    function displayPagination(pagination) {
+      let paginationEl = document.getElementById("pagination"); // 변수 선언을 let으로 변경
+      let fragment = document.createDocumentFragment();
+
+      while (paginationEl.hasChildNodes()) {
+        paginationEl.removeChild(paginationEl.lastChild);
+      }
+
+      for (let i = 1; i <= pagination.last; i++) {
+        let el = document.createElement("a");
+        el.href = "#";
+        el.innerHTML = i;
+
+        if (i === pagination.current) {
+          el.className = "on";
+        } else {
+          el.onclick = (function (i) {
+            return function () {
+              pagination.gotoPage(i);
+            };
+          })(i);
+        }
+
+        fragment.appendChild(el);
+      }
+      paginationEl.appendChild(fragment);
+    }
+
+    function displayMarker(place) {
+      let marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(place.y, place.x),
+      });
+
+      kakao.maps.event.addListener(marker, "click", function () {
+        infowindow.setContent(
+          '<div style="padding:5px;font-size:12px;">' +
+            place.place_name +
+            "</div>"
+        );
         infowindow.open(map, marker);
-      };
+      });
     }
-  }, []);
+  }, [searchPlace]);
 
   return (
-    <div id="map" style={{ width: '100%', height: 600 }}></div>
+    <div>
+      <div
+        id="myMap"
+        style={{
+          width: "1000px",
+          height: "500px",
+        }}
+      ></div>
+      <div id="result-list">
+        {Places.map((item, i) => (
+          <div key={i} style={{ marginTop: "20px" }}>
+            <span>{i + 1}</span>
+            <div>
+              <h5>{item.place_name}</h5>
+              {item.road_address_name ? (
+                <div>
+                  <span>{item.road_address_name}</span>
+                  <span>{item.address_name}</span>
+                </div>
+              ) : (
+                <span>{item.address_name}</span>
+              )}
+              <span>{item.phone}</span>
+            </div>
+          </div>
+        ))}
+        <div id="pagination"></div>
+      </div>
+    </div>
   );
 }

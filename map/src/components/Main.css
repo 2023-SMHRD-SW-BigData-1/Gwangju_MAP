@@ -1,55 +1,66 @@
-
-.FCT{
+.FCT {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-}
-.FCT1{
-      width: 1000;
-      height: 700;
-        display: flex;
-        flex-wrap: wrap;
-        background-color: white;
-        border: 1px solid lightgray;
-        border-radius: 3%;
-
-}
-.FCT1T{
+    }
+    
+    .FCT1 {
+      width: 1000px;
+      height: 700px;
       display: flex;
-      justify-content :flex-start;
-      flex-direction:column;
-}
-.FCT2{
-        display: flex;
-        margin-bottom: 100px;     
-        margin-right: 150px;
-        background-color: white;
-        border: 1px solid lightgray;
-        border-radius: 3%;
-}
-.FCM{
+      flex-wrap: wrap;
+      background-color: white;
+      border: 1px solid lightgray;
+      border-radius: 3%;
+    }
+    
+    .FCT1T {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+    
+    .FCT2 {
+      display: flex;
+      margin-bottom: 100px;
+      margin-right: 150px;
+      background-color: white;
+      border: 1px solid lightgray;
+      border-radius: 3%;
+    }
+    
+    /* .FCT2N {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 1rem;
+      width: auto;
+    } */
+    
+    .FCM {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-}
-.FCM1{
+    }
+    
+    .FCM1 {
       display: flex;
-        background-color: white;
-        border: 1px solid lightgray;
-        border-radius: 3%;
-      
-}
-.FCM2{
+      background-color: white;
+      border: 1px solid lightgray;
+      border-radius: 3%;
+    }
+    
+    .FCM2 {
       display: flex;
-        background-color: white;
-        border: 1px solid lightgray;
-        border-radius: 3%;
-      
-}
-.FCM3{
-      display: flex;    
-        background-color: white;
-        border: 1px solid lightgray;
-        border-radius: 3%;
-      
-}
+      background-color: white;
+      border: 1px solid lightgray;
+      border-radius: 3%;
+    }
+    
+    .FCM3 {
+      display: flex;
+      background-color: white;
+      border: 1px solid lightgray;
+      border-radius: 3%;
+    }

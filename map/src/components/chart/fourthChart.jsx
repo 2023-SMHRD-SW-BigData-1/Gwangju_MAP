@@ -42,6 +42,7 @@ export default class Example extends PureComponent {
             outerRadius={200}
             fill="#8884d8"
             dataKey="value"
+            
           >
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
