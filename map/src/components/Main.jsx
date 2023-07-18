@@ -187,21 +187,20 @@ const Main = () => {
         <div className='FCM3' style={{ width : 500, height : 450}}> <FiveChart cdata5={ch5}/> </div>
     </div>  
 
-    <div className='Board'>
-      
-    <MainBoardList />
-     
-    
-    {/* <Write/> */}
+    <div className="Board">
+        <MainBoardList />
+        {/* <Write/> */}
       </div>
-      <div className='ft'>
-        <LandingPage className = 'ftl' />
-        <Kakaomap className = 'ftk' />
+
+      <div className="ft">
+        <div className="ftl" style={{ backgroundColor: 'white' }}>
+          <LandingPage />
+        </div>
+        <div className="ftk" style={{ backgroundColor: 'white' }}>
+          <Kakaomap />
+        </div>
       </div>
-      
-
-
-    </div>  
+    </div>
   )
 }
 
