@@ -21,11 +21,11 @@ import LandingPage from '../pages/LandingPage'
 const Main = () => {
 
   // 차트 데이터 받아오기
-  const [ch1,setCh1] = useState({})
-  const [ch2,setCh2] = useState({})
-  const [ch3,setCh3] = useState({})
-  const [ch4,setCh4] = useState({})
-  const [ch5,setCh5] = useState({})
+  const [ch1, setCh1] = useState({})
+  const [ch2, setCh2] = useState({})
+  const [ch3, setCh3] = useState({})
+  const [ch4, setCh4] = useState({})
+  const [ch5, setCh5] = useState({})
 
   const [selectedYear, setSelectedYear] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState(null);
@@ -41,7 +41,7 @@ const Main = () => {
       .then((res) => {
         setCh1(res.data);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [selectedYear, selectedRegion]);
 
   // 2번 차트
@@ -50,7 +50,7 @@ const Main = () => {
       .then((res) => {
         setCh2(res.data);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   // 3번 차트
@@ -63,7 +63,7 @@ const Main = () => {
       .then((res) => {
         setCh3(res.data);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [selectedYear]);
 
   // 4번 차트
@@ -77,7 +77,7 @@ const Main = () => {
       .then((res) => {
         setCh4(res.data);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [selectedYear, selectedRegion]);
 
   // useEffect(() => {
@@ -96,7 +96,7 @@ const Main = () => {
       .then((res) => {
         setCh5(res.data);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   const handleYearSelect = (year) => {
@@ -123,64 +123,64 @@ const Main = () => {
 
 
   return (
-    <div className='main' style={{backgroundColor : '#e5e5e5'}}>
+    <div className='main' style={{ backgroundColor: '#ccd7ff' }}>
 
-        {/* 연도, 구 선택 */}
-  <div className="dropdown d-flex">
-  <div className="dropdown-group me-3">
-    <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      연도선택
-    </a>
-    <ul className="dropdown-menu">
-      <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2017)}>2017</a></li>
-      <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2018)}>2018</a></li>
-      <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2019)}>2019</a></li>
-      <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2020)}>2020</a></li>
-      <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2021)}>2021</a></li>
-    </ul>
-  </div>
-  <div className="dropdown-group">
-    <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      구 선택
-    </a>
-    <ul className="dropdown-menu">
-      <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('광산구')}>광산구</a></li>
-      <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('남구')}>남구</a></li>
-      <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('서구')}>서구</a></li>
-      <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('북구')}>북구</a></li>
-      <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('동구')}>동구</a></li>
-    </ul>
-  </div>
-</div>
-        
-        <div className = "FCT" >
+      {/* 연도, 구 선택 */}
+      <div className="dropdown d-flex">
+        <div className="dropdown-group me-3">
+          <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            연도선택
+          </a>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2017)}>2017</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2018)}>2018</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2019)}>2019</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2020)}>2020</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => handleYearSelect(2021)}>2021</a></li>
+          </ul>
+        </div>
+        <div className="dropdown-group">
+          <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            구 선택
+          </a>
+          <ul className="dropdown-menu">
+            <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('광산구')}>광산구</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('남구')}>남구</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('서구')}>서구</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('북구')}>북구</a></li>
+            <li><a className="dropdown-item" href="#" onClick={() => handleRegionSelect('동구')}>동구</a></li>
+          </ul>
+        </div>
+      </div>
 
-          <div className='FCT1' style={{ width : 900, height : 500}}>
+      <div className="FCT" >
 
-            <div className='FCT1T'>
-          {/* <h4>cctv 설치 수</h4>
+        <div className='FCT1' style={{ width: 900, height: 500 }}>
+
+          <div className='FCT1T'>
+            {/* <h4>cctv 설치 수</h4>
           <h4>범죄율</h4> */}
-            </div>
+          </div>
 
-            <FirstChart cdata={ch1}   /></div>
+          <FirstChart cdata={ch1} /></div>
 
-            <div className='FCT2' style={{width : 700, height : 500}} > <ThirdChart cdata3={ch3} />
-            <div className='FCT2N'><h4>범죄율</h4> 
-             {ch3.length > 0 && ch3.slice(0, 5).map((item) => (
-            <div key={item.subject}>{item.subject}: {item.A}</div>
+        <div className='FCT2' style={{ width: 700, height: 500 }} > <ThirdChart cdata3={ch3} />
+          <div className='FCT2N'><h4>범죄율</h4>
+            {ch3.length > 0 && ch3.slice(0, 5).map((item) => (
+              <div key={item.subject}>{item.subject}: {item.A}</div>
             ))}</div>
-             </div>
-
         </div>
 
-        <div className='FCM' > 
-        <div className='FCM1' style={{width : 800, height : 450}}> <FourthChart cdata4={ch4} /> 
-        <div><h4>5대범죄 검거현황</h4>
+      </div>
+
+      <div className='FCM' >
+        <div className='FCM1' style={{ width: 800, height: 450 }}> <FourthChart cdata4={ch4} />
+          <div><h4>5대범죄 검거현황</h4>
             {ch4.length > 0 && ch4.slice(0, 5).map((item) => (
               <div key={item.name}>{item.name}: {item.value}</div>
             ))}
-        
-        </div>
+
+          </div>
 
         </div> 
         <div className='FCM2' style={{ width : 500, height : 450}}> <SecondChart  cdata2 = {ch2}/>  </div>
@@ -189,7 +189,6 @@ const Main = () => {
     <div><br/></div>
     <div className="Board">
         <MainBoardList />
-        {/* <Write/> */}
       </div>
 
       <div className="ft">
@@ -200,6 +199,9 @@ const Main = () => {
           <Kakaomap />
         </div>
       </div>
+
+
+
     </div>
   )
 }

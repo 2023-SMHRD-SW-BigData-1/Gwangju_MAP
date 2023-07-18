@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Axios from "axios";
 import Detail from "./Detail";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import './board.css'
 
 
 const Board = ({

@@ -28,9 +28,8 @@ const Board = ({
 
       <td>{registerId}</td>
 
-      <td>{registerDate}</td>
-
-      <td>{view}</td>
+      <td>{registerDate.match(/^\d{4}-\d{2}-\d{2}/)[0]}</td>
+      
 
     </tr>
 
@@ -100,65 +99,70 @@ class BoardList extends Component {
 
     return (
 
-      <div>
+      <div className="boardCon">
+        <div>
+          <Table striped bordered hover>
 
-        <Table striped bordered hover>
+            <thead>
 
-          <thead>
+              <tr>
 
-            <tr>
+                <th>번호</th>
 
-              <th>번호</th>
+                <th>지역</th>
 
-              <th>지역</th>
+                <th>제목</th>
 
-              <th>제목</th>
+                <th>작성자</th>
 
-              <th>작성자</th>
+                <th>작성일</th>
 
-              <th>작성일</th>
+              </tr>
 
-              <th>조회수</th>
+            </thead>
 
+            <tbody>
+
+              {boardList.map((v) => {
+
+                return (
+
+                  <Board
+
+                    id={v.B_SEQ}
+
+                    region={v.B_REGION}
+
+                    title={v.B_TITLE}
+
+                    registerId={v.MB_ID}
+
+                    registerDate={v.B_AT}
+
+                    content={v.B_CONTENT} // 'content' 추가
+
+                    key={v.B_SEQ}
+
+                    onDetailClick={this.handleDetailClick}
+
+                  />
+                );
+
+              })}
+              <tr>
+              <td colSpan="4"></td> {/* 버튼 셀을 표시하지 않기 위해 빈 셀 추가 */}
+              <td>
+                <Link to="/list">
+                  <button type="button" className="btn btn-primary btn-lg">
+                    더 많은 게시글보기 &gt;&gt;
+                  </button>
+                </Link>
+              </td>
             </tr>
+            </tbody>
 
-          </thead>
-
-          <tbody>
-
-            {boardList.map((v) => {
-
-              return (
-
-                <Board
-
-                  id={v.B_SEQ}
-
-                  region={v.B_REGION}
-
-                  title={v.B_TITLE}
-
-                  registerId={v.MB_ID}
-
-                  registerDate={v.B_AT}
-
-                  view={v.B_VIEWS}
-
-                  content={v.B_CONTENT} // 'content' 추가
-
-                  key={v.B_SEQ}
-
-                  onDetailClick={this.handleDetailClick}
-
-                />
-
-              );
-
-            })}
-
-          </tbody>
-
-        </Table>
+          </Table>
+        </div>
 
         {selectedDetail && (
 
@@ -181,15 +185,10 @@ class BoardList extends Component {
           />
 
         )
-        } {/* Detail 컴포넌트를 렌더링하며, content 데이터를 전달합니다. */}
-        {/* {sessionStorage.getItem("nick" ? )} */}
-        {/* <Button variant="info" >글쓰기</Button> */}
-        <Link to="/list">
-          <button type="button" className="btn btn-primary btn-lg">
-            안전게시판
-          </button>
-          </Link>
-
+        }
+        <div className="b_button">
+          
+        </div>
       </div>
 
     );
