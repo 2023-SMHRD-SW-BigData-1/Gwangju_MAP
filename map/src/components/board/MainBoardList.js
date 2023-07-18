@@ -186,7 +186,7 @@ class BoardList extends Component {
         {/* <Button variant="info" >글쓰기</Button> */}
         <Link to="/list">
           <button type="button" className="btn btn-primary btn-lg">
-            안전게시판
+            더 많은 게시글보기 &gt;&gt;
           </button>
           </Link>
 
