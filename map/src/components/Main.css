@@ -72,11 +72,35 @@
    .inputForm{
       display: flex;
     margin: 15px;
-    width: 400px;
+    width: 1000px;
+    height: 100px;
     padding: 6px;
     border-radius: 15px;
     border: 1px solid #e2e2e2;
    }
-   .kbtn{
-      
-   }
+   .searchSection {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    
+    .inputForm {
+      display: flex;
+      align-items: center;
+    }
+    
+    .inputField {
+      flex: 1;
+      padding: 6px;
+      border-radius: 15px;
+      border: 1px solid #e2e2e2;
+      margin-right: 6px;
+    }
+    
+    .kbtn {
+      padding: 6px 12px;
+      border-radius: 15px;
+      background-color: blue;
+      color: white;
+      border: none;
+    }
