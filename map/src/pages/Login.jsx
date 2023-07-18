@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { navigator,useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 const Login = () => {
   const navigate = useNavigate();
   
@@ -59,8 +60,9 @@ const onClickLogin = () => {
   
 return (
      
+
   <div className="page">
-     
+      
      <div className="titleWrap" >
        <center>
 

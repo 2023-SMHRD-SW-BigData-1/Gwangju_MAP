@@ -190,9 +190,14 @@ const Main = () => {
       <div className='Board'>
         <MainBoardList />
       </div>
-      <div className='ft'>
-        <LandingPage className='ftl' />
-        <Kakaomap className='ftk' />
+
+      <div className="ft">
+        <div className="ftl" style={{ backgroundColor: 'white' }}>
+          <LandingPage />
+        </div>
+        <div className="ftk" style={{ backgroundColor: 'white' }}>
+          <Kakaomap />
+        </div>
       </div>
 
 
