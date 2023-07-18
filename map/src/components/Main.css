@@ -64,3 +64,13 @@
       border: 1px solid lightgray;
       border-radius: 3%;
     }
+    .ft{
+      display: inline;
+      
+    } 
+    .ftl{
+      display: flex;
+    }
+    .ktk{
+      display: flex;
+    }

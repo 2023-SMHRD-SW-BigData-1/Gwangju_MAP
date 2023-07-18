@@ -90,7 +90,7 @@ export default function Kakaomap({ searchPlace }) {
       <div
         id="myMap"
         style={{
-          width: "1000px",
+          width: "100%",
           height: "500px",
         }}
       ></div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Kakaomap from './kakaomap'
-
+import '../components/Main.css'
 
 function LandingPage() {
   const [InputText, setInputText] = useState('')
@@ -17,14 +17,30 @@ function LandingPage() {
   }
 
   return (
-    <>
-      <form className="inputForm" onSubmit={handleSubmit}>
-        <input placeholder="광주 경찰서" onChange={onChange} value={InputText} />
-        <button className='kbtn' type="submit">검색</button>
-      </form>
-      <Kakaomap searchPlace={Place} />
-    </>
-  )
+     <>
+    {/* <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <form class="d-flex" role="search" onSubmit={handleSubmit}>
+      <input class="form-control me-2" type="search" placeholder="광주 파출소" aria-label="Search" onChange={onChange} value={InputText}/>
+      <button class="btn btn-outline-success" type="submit">검색</button>
+    </form>
+  </div>
+</nav> */}
+
+
+<form className="inputForm" onSubmit={handleSubmit}>
+  <input placeholder="광주 파출서" onChange={onChange} value={InputText} />
+  <button className='kbtn' type="submit">검색</button>
+</form>
+<Kakaomap searchPlace={Place} />
+
+
+</> 
+
+
+
+)
+
 }
 
 export default LandingPage;

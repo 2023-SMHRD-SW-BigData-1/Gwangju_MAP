@@ -194,9 +194,9 @@ const Main = () => {
     
     {/* <Write/> */}
       </div>
-      <div>
-        <LandingPage/><hr></hr>
-        <Kakaomap/>
+      <div className='ft'>
+        <LandingPage className = 'ftl' />
+        <Kakaomap className = 'ftk' />
       </div>
       
 
