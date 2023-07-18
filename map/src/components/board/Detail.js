@@ -4,7 +4,6 @@ import Axios from "axios";
 
 const Detail = () => {
   const location = useLocation();
-
   // 사용자가 클릭한 게시물의 id 
   const { getId } = useParams();
 

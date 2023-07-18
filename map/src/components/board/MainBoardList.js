@@ -1,6 +1,5 @@
 import { Component } from "react";
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
 import Axios from "axios";
 import Detail from "./Detail";
 import { Link } from "react-router-dom";
@@ -86,13 +85,12 @@ class BoardList extends Component {
   handleDetailClick = (detailData) => {
 
     // 'Detail' 컴포넌트로 데이터를 보내는 로직
-
+    console.log(detailData);
     this.setState({
 
       selectedDetail: detailData,
 
     });
-
   };
 
 
@@ -182,7 +180,8 @@ class BoardList extends Component {
 
           />
 
-        )} {/* Detail 컴포넌트를 렌더링하며, content 데이터를 전달합니다. */}
+        )
+        } {/* Detail 컴포넌트를 렌더링하며, content 데이터를 전달합니다. */}
         {/* {sessionStorage.getItem("nick" ? )} */}
         {/* <Button variant="info" >글쓰기</Button> */}
         <Link to="/list">
