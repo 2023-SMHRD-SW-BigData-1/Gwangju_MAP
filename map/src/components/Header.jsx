@@ -20,11 +20,12 @@ const Header = () => {
     <div>
       <div className="header">
         <div className="tlt1">
-          <h1 className="header-title" onClick={()=>{nav('/')}}>
-          <img src="http://localhost:3000/img/logo.png" width='50px'></img>
+          <h1 className="header-title" onClick={() => { nav('/') }}>
+            <img src="http://localhost:3000/img/logo.png" width='50px'></img>
             광주안전지도
-            </h1>
+          </h1>
         </div>
+        
         <div className="login">
           {isLoggedIn ? (
             <button type="button" className="btn btn-primary btn-lg" onClick={handleLogout}>
@@ -37,10 +38,10 @@ const Header = () => {
               </button>
             </Link>
           )}<Link to="/list">
-          <button type="button" className="btn btn-primary btn-lg">
-            안전게시판
-          </button>
-        </Link>
+            <button type="button" className="btn btn-primary btn-lg">
+              안전게시판
+            </button>
+          </Link>
         </div>
       </div>
     </div>
