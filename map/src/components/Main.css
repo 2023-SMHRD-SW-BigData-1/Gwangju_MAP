@@ -71,15 +71,6 @@
     } 
    .inputForm{
       display: flex;
-<<<<<<< HEAD
-    }
-    .ktk{
-      display: flex;
-    }
-    .Board{
-      margin:20px;
-    }
-=======
     margin: 15px;
     width: 400px;
     padding: 6px;
@@ -89,4 +80,6 @@
    .kbtn{
       
    }
->>>>>>> 8ca2365df8959afda4dc97ef744193f0f86534d2
+   .Board{
+    margin:20px;
+  }
