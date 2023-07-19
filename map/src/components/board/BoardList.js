@@ -117,13 +117,10 @@ class BoardList extends Component {
 
           </Link>
         )}
-
-        <Link to="/list/write">
+        {sessionStorage.getItem("id")&&(<Link to="/list/write">
           <Button className="leftB">글쓰기</Button>
-        </Link>
-        <Link to="/list/update">
-          <Button >수정하기</Button>
-        </Link>
+        </Link>)}
+        
       </div>
     );
   }
