@@ -1,8 +1,10 @@
 import { Component } from "react";
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 import Axios from "axios";
 import Detail from "./Detail";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import './board.css'
 
 
 const Board = ({
@@ -11,182 +13,115 @@ const Board = ({
   title,
   registerId,
   registerDate,
-  view,
   content,
   onDetailClick,
 }) => {
-
   return (
-
     <tr>
-
       <td className="text-center">{id}</td>
 
-      <td className="left">{region}</td>
-
-      <td className="left" onClick={() => onDetailClick({ id, region, title, registerId, registerDate, view, content })}>{title}</td>
-
+<td className="left">{region}</td>
+      <td className="left" onClick={() => onDetailClick({ id })}>
+        {title}
+      </td>
       <td className="text-center">{registerId}</td>
-
       <td className="text-center">{registerDate.match(/^\d{4}-\d{2}-\d{2}/)[0]}</td>
-      
-
     </tr>
-
   );
-
 };
 
-
-class BoardList extends Component {
-
+class MainBoardList extends Component {
   state = {
-
     boardList: [],
-
     selectedDetail: null,
-
   };
-
 
   getList = () => {
-
     Axios.get("http://localhost:8888/mainlist", {})
-
       .then((res) => {
-
         const { data } = res;
-
         this.setState({
-
           boardList: data,
-
         });
-
       })
-
       .catch((e) => {
-
         console.error(e);
-
       });
-
   };
 
-
   componentDidMount() {
-
     this.getList();
-
   }
 
-
   handleDetailClick = (detailData) => {
-
-    // 'Detail' 컴포넌트로 데이터를 보내는 로직
-    console.log(detailData);
+    const { id } = detailData; // id 프로퍼티 추가
     this.setState({
-
-      selectedDetail: detailData,
-
+      selectedDetail: {
+        id,
+        ...detailData,
+      },
     });
   };
 
-
   render() {
-
     const { boardList, selectedDetail } = this.state;
 
     return (
-
       <div>
-        <div className="boardCon">
-          <Table striped bordered hover>
+        <Table striped bordered hover className="a_boardtable">
+          <thead>
+            <tr className="text-center">
+            <th className="num">번호</th>
 
-            <thead>
+<th className="reg">지역</th>
 
-              <tr>
+<th className="text">제목</th>
 
-                <th className="num text-center">번호</th>
+<th className="person">작성자</th>
 
-                <th className="reg text-center">지역</th>
+<th className="date">작성일</th>
+            </tr>
+          </thead>
+          <tbody>
+            {boardList.map((v) => (
+              <Board
+                id={v.B_SEQ}
+                region={v.B_REGION}
+                title={v.B_TITLE}
+                registerId={v.MB_ID}
+                registerDate={v.B_AT}
+                view={v.B_VIEWS}
+                content={v.B_CONTENT}
+                key={v.B_SEQ}
+                onDetailClick={this.handleDetailClick}
+              />
+            ))}
+          </tbody>
+        </Table>
 
-                <th className="text-center">제목</th>
-
-                <th className="person text-center">작성자</th>
-
-                <th className="date text-center">작성일</th>
-
-              </tr>
-
-            </thead>
-
-            <tbody>
-
-              {boardList.map((v) => {
-
-                return (
-
-                  <Board
-
-                    id={v.B_SEQ}
-
-                    region={v.B_REGION}
-
-                    title={v.B_TITLE}
-
-                    registerId={v.MB_ID}
-
-                    registerDate={v.B_AT}
-
-                    content={v.B_CONTENT} // 'content' 추가
-
-                    key={v.B_SEQ}
-
-                    onDetailClick={this.handleDetailClick}
-
-                  />
-                );
-
-              })}
-              <tr className="b_r_btn">
-                <td colSpan="4"></td> {/* 버튼 셀을 표시하지 않기 위해 빈 셀 추가 */}
-                <td>
-                <Link to="/list">
+        {selectedDetail && (
+          <Link
+            to={{
+              pathname: `/list/detail/${selectedDetail.id}`,
+              state: {
+                region: selectedDetail.region,
+                title: selectedDetail.title,
+                registerId: selectedDetail.registerId,
+                registerDate: selectedDetail.registerDate,
+                view: selectedDetail.view,
+                content: selectedDetail.content,
+              },
+            }}
+          >
+            <Button type="button" className="leftB">게시글 확인하기</Button>
+          </Link>
+        )}
+        <Link to="/list">
                   <button type="button" className="btn btn-primary btn-lg">
                     더 많은 게시글보기 &gt;&gt;
                   </button>
                 </Link>
-                </td>
-              </tr>
-            </tbody>
-
-          </Table>
         </div>
-
-        {selectedDetail && (
-
-          <Detail
-
-            id={selectedDetail.id}
-
-            region={selectedDetail.region}
-
-            title={selectedDetail.title}
-
-            registerId={selectedDetail.registerId}
-
-            registerDate={selectedDetail.registerDate}
-
-            view={selectedDetail.view}
-
-            content={selectedDetail.content} // 'content' 추가
-
-          />
-
-        )
-        }
-      </div>
 
     );
 
@@ -195,4 +130,4 @@ class BoardList extends Component {
 }
 
 
-export default BoardList;
+export default MainBoardList;

@@ -9,10 +9,10 @@ const session = require('express-session');
 const app = express();
 
 const cors = require('cors');
-
+const port = 8888;
 // CORS 허용 설정
 app.use(cors());
-
+app.use(express.json());
 
 
 
@@ -362,6 +362,39 @@ router.get('/mainlist', (req, res) => {
   });
 });
 
+
+router.post("/b_detail", (req, res) => {
+  var title = req.body.title;
+
+  const sqlQuery ="select * from tbl_board where b_seq=:title";
+
+  oracledb.getConnection(db_config, (err, conn) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Failed to connect to the database.");
+    }
+    conn.execute(
+      sqlQuery,
+      { title: title},
+      { autoCommit: true },
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send("Failed to execute the query.");
+        }
+        res.send(result);
+        conn.close((err) => {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
+    );
+  });
+});
+
+
+
 router.post("/b_insert", (req, res) => {
   var title = req.body.title;
   var region = req.body.region;
@@ -429,34 +462,6 @@ router.post("/b_update", (req, res) => {
     );
   });
 });
-
-// router.post('/list/detail', (req, res) => {
-//   const id = req.body.id;
-
-//   const sqlQuery = `SELECT b_seq, b_title, b_content, mb_id, b_region FROM tbl_board WHERE b_seq = :id`;
-
-//   oracledb.getConnection(db_config, (err, conn) => {
-//     if (err) {
-//       console.error(err);
-//       return res.status(500).send('Failed to connect to the database.');
-//     }
-    
-//     conn.execute(sqlQuery, [id], { outFormat: oracledb.OUT_FORMAT_OBJECT }, (err, result) => {
-//       if (err) {
-//         console.error(err);
-//         return res.status(500).send('Failed to execute the query.');
-//       }
-//       // console.log("조회성공");
-//       console.log(result.rows);
-//       res.send(result.rows[0] ); // 수정: 객체 형태로 응답 데이터를 전달
-//       conn.close((err) => {
-//         if (err) {
-//           console.error(err);
-//         }
-//       });
-//     });
-//   });
-// });
 
 
 module.exports = router;

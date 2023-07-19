@@ -10,11 +10,12 @@
 .person{
     width: 10%;
 }
-.boardCon{
-justify-content : center;
-align-items: center;
+.boardtable{
+    height: 400px;
 }
-.left{
-    padding-left: 2000px;
+.a_boardtable{
+    height:30px;
 }
-
+.leftB{
+    margin-right: 10px;
+}

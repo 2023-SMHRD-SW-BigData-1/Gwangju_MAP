@@ -13,20 +13,19 @@ const Board = ({
   title,
   registerId,
   registerDate,
-  view,
   content,
   onDetailClick,
 }) => {
   return (
     <tr>
-      <td>{id}</td>
-      <td>{region}</td>
-      <td onClick={() => onDetailClick({ id, region, title, registerId, registerDate, view, content })}>
+      <td className="text-center">{id}</td>
+
+<td className="left">{region}</td>
+      <td className="left" onClick={() => onDetailClick({ id })}>
         {title}
       </td>
-      <td>{registerId}</td>
-      <td>{registerDate}</td>
-      <td>{view}</td>
+      <td className="text-center">{registerId}</td>
+      <td className="text-center">{registerDate.match(/^\d{4}-\d{2}-\d{2}/)[0]}</td>
     </tr>
   );
 };
@@ -69,15 +68,18 @@ class BoardList extends Component {
 
     return (
       <div>
-        <Table striped bordered hover>
+        <Table striped bordered hover className="boardtable">
           <thead>
-            <tr>
-              <th>번호</th>
-              <th>지역</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-              <th>조회수</th>
+            <tr className="text-center">
+            <th className="num">번호</th>
+
+<th className="reg">지역</th>
+
+<th className="text">제목</th>
+
+<th className="person">작성자</th>
+
+<th className="date">작성일</th>
             </tr>
           </thead>
           <tbody>
@@ -111,15 +113,16 @@ class BoardList extends Component {
               },
             }}
           >
-            <Button variant="info">게시글 확인하기</Button>
+                        <Button className="leftB">게시글 확인하기</Button>
+
           </Link>
         )}
 
         <Link to="/list/write">
-          <Button variant="info">글쓰기</Button>
+          <Button className="leftB">글쓰기</Button>
         </Link>
         <Link to="/list/update">
-          <Button variant="info">수정하기</Button>
+          <Button >수정하기</Button>
         </Link>
       </div>
     );
