@@ -5,7 +5,6 @@ import Login from './pages/Login';
 import Join from './pages/Join';
 import BoardList from './components/board/BoardList';
 import Write from './components/board/Write';
-import Update from './components/board/Update';
 import Detail from './components/board/Detail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Kakaomap from '../src/pages/kakaomap'
