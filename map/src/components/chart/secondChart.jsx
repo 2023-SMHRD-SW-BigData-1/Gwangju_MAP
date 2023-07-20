@@ -53,8 +53,6 @@ export default class Example extends PureComponent {
   
   render() {
     const { cdata2 } = this.props;
-    // console.log(cdata2);
-    // data = cdata2
     return (
       
       <ResponsiveContainer width="100%" height="100%">

@@ -92,7 +92,7 @@ export default function Kakaomap({ searchPlace }) {
     id="myMap"
     style={{
       width: "100%",
-      height: "400px",
+      height: "500px",
       
     }}
   ></div>
@@ -100,7 +100,7 @@ export default function Kakaomap({ searchPlace }) {
     id="result-list"
     style={{
       overflow: "scroll",
-      maxHeight: "500px", // 최대 높이를 지정하여 스크롤이 필요한 경우 나타나도록 함
+      maxHeight: "400px", // 최대 높이를 지정하여 스크롤이 필요한 경우 나타나도록 함
     }}
   >
     {Places.map((item, i) => (

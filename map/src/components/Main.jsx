@@ -168,8 +168,9 @@ const Main = () => {
           <div className='FCT2N'><h4>범죄율</h4>
             {ch3.length > 0 && ch3.slice(0, 5).map((item) => (
               <div key={item.subject}>{item.subject}: {item.A}</div>
-            ))}</div>
-        </div>
+              ))}
+          </div>
+              </div>
 
       </div>
 
@@ -178,9 +179,9 @@ const Main = () => {
           <div><h4>5대범죄 검거현황</h4>
             {ch4.length > 0 && ch4.slice(0, 5).map((item) => (
               <div key={item.name}>{item.name}: {item.value}</div>
-            ))}
+              ))}
+              </div>
 
-          </div>
 
         </div> 
         <div className='FCM2' style={{ width : 500, height : 450}}> <SecondChart  cdata2 = {ch2}/>  </div>
@@ -195,7 +196,7 @@ const Main = () => {
         <div className="ftl" style={{ backgroundColor: 'white' }}>
           <LandingPage />
         </div>
-        <div className="ftk" style={{ backgroundColor: 'white' }}>
+        <div className="ftk" style={{ backgroundColor: 'white', display:'none' }}>
           <Kakaomap />
         </div>
       </div>

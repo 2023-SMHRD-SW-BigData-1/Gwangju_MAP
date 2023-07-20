@@ -2,10 +2,12 @@ import { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 /**
  * Write class
  */
+
 class Write extends Component {
     state = {
         title: "",
@@ -22,13 +24,16 @@ class Write extends Component {
             
         })
         .then((res) => {
-            console.log(res);
+            console.log(res);            
             
             })
             .catch((e) => {
                 console.error(e);
             });
+
+            
     };
+
 
 
     handleChange = (e) => {
@@ -55,7 +60,7 @@ class Write extends Component {
                     <Form.Label>내용</Form.Label>
                     <Form.Control as="textarea" name="content" onChange={this.handleChange} placeholder="내용을 입력하세요" />
                 </Form.Group>
-                <Button variant="info" onClick={this.write}>작성완료</Button>
+                <Button variant="info" onClick={this.write} >작성완료</Button>
                 <Button variant="secondary">취소</Button>
             </div>
         );

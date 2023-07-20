@@ -65,7 +65,7 @@ const Join = () => {
     
      <div className="inputTitle">비밀번호</div>
      <div className="inputWrap">
-     <input className="input" value={mb_pw} onChange ={handleinputpw} />
+     <input className="input" type='password' value={mb_pw} onChange ={handleinputpw} />
       </div>
 
    <br></br>
