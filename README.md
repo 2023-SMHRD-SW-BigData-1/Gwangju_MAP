@@ -57,8 +57,6 @@
 ### 6. 구현화면
 
 
-https://github.com/2023-SMHRD-SW-BigData-1/Gwangju_MAP/assets/132454951/7ada01f6-0ff1-4f5f-b4b7-78d2e28e5414
-
 
 
 #### 메인화면
